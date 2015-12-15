@@ -10,7 +10,7 @@ namespace BingGallery {
 	* Helper to find html template paths. Can be invoked using BingGallery.resolvePath()
 	*/
 	export function resolvePath(path: string): string {
-		return '/templates/' + path + '.html';
+		return 'templates/' + path + '.html';
 	}
 
 	/**
@@ -18,7 +18,7 @@ namespace BingGallery {
 	 * module class below should perform all your registrations in one place. Opinionated 
 	 * thought that its better that way.
 	 */
-	export let App = angular.module('BingGallery', ['ngAnimate', 'ngMaterial', 'ui.router']);
+	export let App = angular.module('BingGallery', ['ngAnimate', 'ngMaterial', 'ngRoute']);
 
 	/**
 	 * Module class that manages bootstrapping and module registration and configuration.
@@ -29,16 +29,19 @@ namespace BingGallery {
 				.config(['$routeProvider', '$locationProvider', this.registerRoutes]);
 		}
 
-		registerRoutes($stateProvider: ng.ui.IStateProvider, $urlRouterProvider: ng.ui.IUrlRouterProvider, $locationProvider: ng.ILocationProvider) {
-			$stateProvider.state({				
+		registerRoutes(
+			$routeProvider: ng.route.IRouteProvider,
+			$locationProvider: ng.ILocationProvider
+		) {
+			$routeProvider.when('/home', {
 				templateUrl: resolvePath('views/home')
 			});
 
-			$urlRouterProvider.otherwise('/home');
+			$routeProvider.otherwise('/home');
 
 			$locationProvider.html5Mode(true).hashPrefix('!');
 		}
 	}
-	
+
 	new Module(App);
 }
