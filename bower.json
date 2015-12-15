@@ -5,7 +5,8 @@
     "jquery": "^2.1.4",
     "angular": "^1.4.8",
     "angular-ui-router": "*",
-    "angular-material": "*"    
+    "angular-material": "*",
+    "underscore": "*"    
   },
   "overrides": {
     "jquery": {
@@ -15,7 +16,7 @@
       "main": "angular.js"
     },
     "angular-ui-router": {
-      "main": "angular-route.js"
+      "main": "release/angular-ui-router.js"
     }
   },
   "version": "0.0.0",
