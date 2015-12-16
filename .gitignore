@@ -51,8 +51,7 @@ $RECYCLE.BIN/
 # Ignore the following folders
 node_modules/**
 bower_components/**
-public/min/**
-public/css/**
-public/js/**
+public/**/*.css
+public/**/*.js
 typings/**
 .vscode/**

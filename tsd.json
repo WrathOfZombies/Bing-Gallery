@@ -11,6 +11,9 @@
     "angularjs/angular.d.ts": {
       "commit": "8ea42cd8bb11863ed6f242d67c502288ebc45a7b"
     },
+    "angularjs/angular-animate.d.ts": {
+      "commit": "8ea42cd8bb11863ed6f242d67c502288ebc45a7b"
+    },
     "angular-ui-router/angular-ui-router.d.ts": {
       "commit": "8ea42cd8bb11863ed6f242d67c502288ebc45a7b"
     },
@@ -18,12 +21,6 @@
       "commit": "8ea42cd8bb11863ed6f242d67c502288ebc45a7b"
     },
     "underscore/underscore.d.ts": {
-      "commit": "8ea42cd8bb11863ed6f242d67c502288ebc45a7b"
-    },
-    "angularjs/angular-animate.d.ts": {
-      "commit": "8ea42cd8bb11863ed6f242d67c502288ebc45a7b"
-    },
-    "angularjs/angular-route.d.ts": {
       "commit": "8ea42cd8bb11863ed6f242d67c502288ebc45a7b"
     }
   }

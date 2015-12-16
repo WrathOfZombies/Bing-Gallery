@@ -57,20 +57,23 @@ gulp.task('compile:sass', ['clean:sass'], function () {
         .pipe(connect.reload());
 });
 
-gulp.task('generate-references', function () {
+gulp.task('generate-references', ['clean:ts'], function () {
     var target = gulp.src(config.ts.references);
     var sources = gulp.src([config.ts.input], { read: false });
-    return target.pipe(inject(sources, {
-        starttag: '//{',
-        endtag: '//}',
-        addRootSlash: false,
-        transform: function (filepath) {
-            return '/// <reference path="' + filepath + '" />';
-        }
-    })).pipe(gulp.dest('./'));
+    return target
+        .pipe(plumber(errorHandler))
+        .pipe(inject(sources, {
+            starttag: '//{',
+            endtag: '//}',
+            addRootSlash: false,
+            transform: function (filepath) {
+                return '/// <reference path="' + filepath + '" />';
+            }
+        }))
+        .pipe(gulp.dest('./'));
 });
 
-gulp.task('compile:ts', ['generate-references', 'clean:ts'], function () {
+gulp.task('compile:ts', ['generate-references'], function () {
     return gulp.src(config.ts.input)
         .pipe(plumber(errorHandler))
         .pipe(sourcemaps.init())

@@ -18,7 +18,7 @@ namespace BingGallery {
 	 * module class below should perform all your registrations in one place. Opinionated 
 	 * thought that its better that way.
 	 */
-	export let App = angular.module('BingGallery', ['ngAnimate', 'ngMaterial', 'ngRoute']);
+	export let App = angular.module('BingGallery', ['ngAnimate', 'ngMaterial', 'ui.router']);
 
 	/**
 	 * Module class that manages bootstrapping and module registration and configuration.
@@ -26,18 +26,19 @@ namespace BingGallery {
 	class Module {
 		constructor(private module: ng.IModule) {
 			this.module
-				.config(['$routeProvider', '$locationProvider', this.registerRoutes]);
+				.config(['$stateProvider', '$locationProvider', this.registerStates])
+				.run(['$state', ($state: ng.ui.IStateService) => {
+					$state.go('home');
+				}]);
 		}
 
-		registerRoutes(
-			$routeProvider: ng.route.IRouteProvider,
+		registerStates(
+			$stateProvider: ng.ui.IStateProvider,
 			$locationProvider: ng.ILocationProvider
 		) {
-			$routeProvider.when('/home', {
+			$stateProvider.state('home', {
 				templateUrl: resolvePath('views/home')
 			});
-
-			$routeProvider.otherwise('/home');
 
 			$locationProvider.html5Mode(true).hashPrefix('!');
 		}
