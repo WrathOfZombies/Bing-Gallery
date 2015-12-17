@@ -1,5 +1,5 @@
-/// <reference path="../../typings/tsd.d.ts" />
 /// <reference path="../../_references.d.ts" />
+/// <reference path="../../typings/tsd.d.ts" />
 
 /**
  * Creates a namespace for all the functional logic to fall within a closure. 
@@ -24,11 +24,11 @@ namespace BingGallery.Core {
 	 * Module class that manages bootstrapping and module registration and configuration.
 	 */
 	class App {
-		private _registerComponents() {
-			
+		private registerComponents() {
+			this.module.factory('BingImageService', ['$http', ($http: ng.IHttpService) => { return new BingGallery.Core.Services.BingImageService($http); }]);
 		}
-		
-		private _registerStates(
+
+		private registerStates(
 			$stateProvider: ng.ui.IStateProvider,
 			$locationProvider: ng.ILocationProvider
 		) {
@@ -38,16 +38,22 @@ namespace BingGallery.Core {
 
 			$locationProvider.html5Mode(true).hashPrefix('!');
 		}
-		
-		private _configureComponents() {
-			this.module.config(['$stateProvider', '$locationProvider', this._registerStates]);
+
+		private configureComponents() {
+			this.module.config(['$stateProvider', '$locationProvider', this.registerStates]);
 		}
-		
+
 		constructor(private module: ng.IModule) {
-			this._registerComponents();
-			this._configureComponents();
+			this.registerComponents();
+			this.configureComponents();
 		}
+
+		run(params: Array<any>) { this.module.run(params); }
 	}
 
-	new App(module);
+	new App(module).run(['$state', 'BingImageService', ($state: ng.ui.IStateService, BingImageService: BingGallery.Core.Services.BingImageService) => {
+		$state.go('home');
+		console.log(BingImageService);
+		BingImageService.getImageFromCalendar();
+	}]);
 }
