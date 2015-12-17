@@ -3,7 +3,7 @@
     "js": "./public/lib/js",
     "css": "./public/lib/css",
     "fonts": "./public/lib/fonts"
-  }, 
+  },
   "sass": {
     "input": "./src/scss/**/*.scss",
     "output": "./public/css"

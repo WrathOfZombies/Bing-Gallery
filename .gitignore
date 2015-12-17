@@ -55,3 +55,6 @@ public/**/*.css
 public/**/*.js
 typings/**
 .vscode/**
+obj/
+bin/
+.vs/
