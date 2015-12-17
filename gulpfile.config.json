@@ -1,26 +1,26 @@
 {
   "lib": {
-    "js": "./platforms/www/lib/js",
-    "css": "./platforms/www/lib/css",
-    "fonts": "./platforms/www/lib/fonts"
+    "js": "./public/www/lib/js",
+    "css": "./public/www/lib/css",
+    "fonts": "./public/www/lib/fonts"
   },
   "sass": {
     "input": "./src/scss/**/*.scss",
-    "output": "./platforms/www/css"
+    "output": "./public/www/css"
   },
   "ts": {
     "references": "./_references.d.ts",
     "input": "./src/ts/**/*.ts",
-    "output": "./platforms/www/js"
+    "output": "./public/www/js"
   },
   "html": {
-    "input": "./platforms/www/**/*.html",
-    "output": "./platforms/www"
+    "input": "./src/html/**/*.html",
+    "output": "./public/www"
   },
   "server": {
-    "root": "./platforms/www",
+    "root": "./public/www",
     "host": "localhost",
     "port": 8080,
-    "fallback": "./platforms/www/index.html"
+    "fallback": "./public/www/index.html"
   }
 }
