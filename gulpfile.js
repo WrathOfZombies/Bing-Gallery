@@ -82,7 +82,12 @@ gulp.task('compile:ts', ['generate-references'], function () {
         .pipe(connect.reload());
 });
 
-gulp.task('serve', ['compile:sass', 'compile:ts'], function () {
+gulp.task('copy:html', function () {
+    gulp.src(config.html.input, { base: './' })
+        .pipe(gulp.dest(config.html.output));
+});
+
+gulp.task('serve', ['compile:sass', 'compile:ts', 'copy:html'], function () {
     connect.server({
         root: config.server.root,
         host: config.server.host,

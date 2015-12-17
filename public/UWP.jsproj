@@ -60,16 +60,6 @@
     </AppxManifest>
     <None Include="UWP_TemporaryKey.pfx" />
   </ItemGroup>
-  <ItemGroup>
-    <Content Include="merges - Copy\android\scripts\android2.3-jscompat.js" />
-    <Content Include="merges - Copy\android\scripts\platformOverrides.js" />
-    <Content Include="merges - Copy\windows\scripts\platformOverrides.js" />
-    <Content Include="merges - Copy\windows\scripts\winstore-jscompat.js" />
-  </ItemGroup>
-  <ItemGroup>
-    <Folder Include="merges - Copy\ios\" />
-    <Folder Include="merges - Copy\wp8\" />
-  </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\$(WMSJSProjectDirectory)\Microsoft.VisualStudio.$(WMSJSProject).targets" />
   <!-- To modify your build process, add your task inside one of the targets below then uncomment
        that target and the DisableFastUpToDateCheck PropertyGroup. 
