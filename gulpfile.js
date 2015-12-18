@@ -80,14 +80,18 @@ gulp.task('generate-references', ['clean:ts'], function () {
 gulp.task('compile:ts', ['generate-references'], function () {
     return gulp.src(config.ts.input)
         .pipe(plumber(errorHandler))
-        .pipe(sourcemaps.init())
-        .pipe(tsc())
+        .pipe(tsc({
+            target: 'ES5',
+            sourceMap: true,
+            outDir: config.ts.output
+        }))
         .pipe(gulp.dest(config.ts.output))
-        .pipe(connect.reload());
+        .pipe(connect.reload());    
 });
 
 gulp.task('copy:html', ['clean:html'], function () {
     gulp.src(config.html.input, { base: config.html.base })
+        .pipe(plumber(errorHandler))
         .pipe(gulp.dest(config.html.output));
 });
 

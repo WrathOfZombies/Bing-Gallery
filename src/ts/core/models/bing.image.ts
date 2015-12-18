@@ -21,7 +21,7 @@ namespace BingGallery.Core.Models {
 			return this.images.image;
 		}
 
-        private xml2json<T>(node: Element | Document): T {
+		private xml2json<T>(node: Element | Document): T {
 			try {
 				var data = {};
 
@@ -45,7 +45,7 @@ namespace BingGallery.Core.Models {
 				for (c = 0; cn = node.childNodes[c]; c++) {
 					if (cn.nodeType == 1) {
 						if (cn.childNodes.length == 1 && cn.firstChild.nodeType == 3) {
-                            // text value
+							// text value
 							Add(cn.nodeName, cn.firstChild.nodeValue);
 						}
 						else {

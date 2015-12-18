@@ -1,1 +1,1 @@
-C:\Users\bhkrish.REDMOND\Documents\GitHub\Bing-Gallery\public\UWP.jsproj;neutral
+D:\Repos\Personal\Bing-Gallery\public\UWP.jsproj;neutral
