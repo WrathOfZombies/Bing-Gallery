@@ -24,9 +24,7 @@ www\lib\js\angular-aria.js
 www\lib\js\angular-material.js
 www\lib\js\angular-messages.js
 www\lib\js\angular-ui-router.js
-www\lib\js\cordova.js
 www\lib\js\jquery.js
-www\lib\js\ng-cordova.js
 www\lib\js\underscore.js
 www\templates\partials\shared\header.html
 www\templates\views\home.html

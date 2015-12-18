@@ -54,8 +54,12 @@ bower_components/**
 public/**/*.css
 public/**/*.js
 public/**/*.html
+public/platforms
+public/plugins
+public/bld/
 typings/**
 .vscode/**
 obj/
+bld/
 bin/
 .vs/
