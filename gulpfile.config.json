@@ -14,11 +14,12 @@
     "output": "./public/www/js"
   },
   "html": {
+    "base": "./src/html/",
     "input": "./src/html/**/*.html",
     "output": "./public/www"
   },
   "server": {
-    "root": "./public/www",
+    "root": "./public",
     "host": "localhost",
     "port": 8080,
     "fallback": "./public/www/index.html"

@@ -32,6 +32,10 @@ gulp.task('clean:ts', function (done) {
     return del(config.ts.output, done);
 });
 
+gulp.task('clean:html', function (done) {
+    return del(config.html.output + '/**/*.html', done);
+});
+
 gulp.task('bower:download', ['clean:bower'], function () {
     return bower();
 });
@@ -82,8 +86,8 @@ gulp.task('compile:ts', ['generate-references'], function () {
         .pipe(connect.reload());
 });
 
-gulp.task('copy:html', function () {
-    gulp.src(config.html.input, { base: './' })
+gulp.task('copy:html', ['clean:html'], function () {
+    gulp.src(config.html.input, { base: config.html.base })
         .pipe(gulp.dest(config.html.output));
 });
 
@@ -97,7 +101,7 @@ gulp.task('serve', ['compile:sass', 'compile:ts', 'copy:html'], function () {
     });
 });
 
-gulp.task('server:reload', function () {
+gulp.task('server:reload', ['copy:html'], function () {
     gulp.src(config.html.input)
         .pipe(connect.reload())
         .pipe(plumber(errorHandler));
