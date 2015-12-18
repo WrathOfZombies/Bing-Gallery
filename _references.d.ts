@@ -2,6 +2,8 @@
 
 /// <reference path="src/ts/app.ts" />
 
+/// <reference path="src/ts/bootstrapper.ts" />
+
 /// <reference path="src/ts/core/models/bing.image.ts" />
 
 /// <reference path="src/ts/core/services/bing.service.ts" />

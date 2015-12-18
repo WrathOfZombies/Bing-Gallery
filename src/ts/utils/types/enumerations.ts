@@ -2,6 +2,12 @@
 /// <reference path="../../../../typings/tsd.d.ts" />
 
 namespace BingGallery.Utils.Enumerations {
+	export enum Context {
+		Web,
+		Windows,
+		Cordova	
+	}
+	
 	export enum Regions {
 		Arabia,
 		Bulgaria,

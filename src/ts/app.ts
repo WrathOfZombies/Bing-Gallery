@@ -8,7 +8,7 @@ namespace BingGallery.Core {
 
     export let module = angular.module('BingGallery', ['ngAnimate', 'ngMaterial', 'ui.router']);
 
-    class App {
+    export class App {
         private registerComponents() {
             this.module.factory('BingImageService', ['$http', ($http: ng.IHttpService) => { return new BingGallery.Core.Services.BingImageService($http); }]);
         }
@@ -38,42 +38,17 @@ namespace BingGallery.Core {
         run() {
             this.module.run(['$state', 'BingImageService', ($state: ng.ui.IStateService, BingImageService: BingGallery.Core.Services.BingImageService) => {
                 $state.go('home');
-                console.log(BingImageService);
                 BingImageService.getImageFromCalendar();
             }]);
         }
-    }
 
-    function bootstrap() {
-        if (!(document && angular)) return;
+        static bootstrap() {
+            if (!(document && angular)) return;
+            new App(module);
 
-        new App(module);
-
-        angular.element(document).ready(() => {
-            console.log('Bootstrapping');
-            angular.bootstrap(document, ['BingGallery']);
-        });
-    }
-
-    export function startApplication() {
-        var context = document.URL.indexOf('http://') === -1 && document.URL.indexOf('https://') === -1;
-        var windowsMode = window.hasOwnProperty('Windows');
-        if (context && !windowsMode) {
-            console.log('cordova mode: waiting for device');
-            document.addEventListener('deviceready', () => {
-                console.log('device ready');
-                bootstrap();
-            }, false);
+            angular.element(document).ready(() => {
+                angular.bootstrap(document, ['BingGallery']);
+            });
         }
-
-        if (windowsMode) {
-            console.log('windows mode: waiting for device');
-        }
-        else {
-            console.log('web mode: waiting for browser');
-        }
-        bootstrap();
     }
 }
-
-BingGallery.Core.startApplication();

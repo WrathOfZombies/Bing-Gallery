@@ -18,9 +18,7 @@ namespace BingGallery.Core.Services {
 			return response.data.map(this.retrieveImage);
 		}
 
-		constructor(private $http: ng.IHttpService) {
-			console.log('Creating a service');
-		}
+		constructor(private $http: ng.IHttpService) { }
 
 		getImageFromCalendar(
 			count: number = 1,
@@ -34,9 +32,7 @@ namespace BingGallery.Core.Services {
 			formattedUrl = formattedUrl.replace('{page}', page.toString());
 			formattedUrl = formattedUrl.replace('{region}', utils.Constants.REGIONS[region]);
 
-			console.log('Invoking service');
-
-			let xhr = this.$http.get(this.url);
+			let xhr = this.$http.get(formattedUrl);
 
 			return count > 1 ? xhr.then(this.retrieveImageArray) : xhr.then(this.retrieveImage);
 		}
