@@ -12,15 +12,42 @@ namespace BingGallery.Core {
         private registerComponents() {
             this.module.factory('BingImageService', ['$http', ($http: ng.IHttpService) => { return new BingGallery.Core.Services.BingImageService($http); }]);
             this.module.controller('TileController', ['BingImageService', class TileController {
-                tiles: Array<any>;
+                tiles: Array<any> = [];
 
                 constructor(private bingImageService: BingGallery.Core.Services.BingImageService) {
-                    bingImageService.getImagesFromCalendar(10).then((images: Core.Models.ImageManager) => {
-                        this.tiles = images.get();
-                        console.log(this.tiles);
+
+                    for (let i = 7, n; n = i + 1, i < 500; i += 7) {
+                        bingImageService.getImagesFromCalendar(i, n).then((images) => { this.renderImages(images) });
+                    }
+                }
+
+                renderImages(images: Core.Models.ImageManager) {
+                    let tiles = images.get();
+
+                    if (!this.tiles) {
+                        console.log('initializing');
+                        this.tiles = tiles;
+                        return;
+                    }
+
+                    tiles.forEach((tile) => {
+                        console.log(tile);
+                        this.tiles.push(tile);
                     });
                 }
-            }]);            
+
+                setBackground(tile: Utils.Interfaces.IBingImage) {
+                    var url = 'https://www.bing.com' + tile.urlBase + '_1920x1080.jpg';
+
+                    if (window.hasOwnProperty('Windows')) {
+                        let windows = window['Windows'];
+                        let userPersonalizationSettings = windows.System.UserProfile.UserProfilePersonalizationSettings;
+                        if (userPersonalizationSettings.isSupported()) {
+                            //userPersonalizationSettings.current.trySetWallpaperImageAsync();
+                        }
+                    }
+                }
+            }]);
 
             this.module.directive('backImage', function () {
                 return function (scope, element, attrs) {
@@ -32,7 +59,7 @@ namespace BingGallery.Core {
                 };
             });
         }
-
+        
         private registerStates(
             $stateProvider: ng.ui.IStateProvider,
             $locationProvider: ng.ILocationProvider
@@ -59,7 +86,7 @@ namespace BingGallery.Core {
 
         run() {
             this.module.run(['$state', 'BingImageService', ($state: ng.ui.IStateService, BingImageService: BingGallery.Core.Services.BingImageService) => {
-                $state.go('home');                
+                $state.go('home');
             }]);
         }
 

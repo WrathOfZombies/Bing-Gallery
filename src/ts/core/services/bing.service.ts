@@ -9,7 +9,7 @@ namespace BingGallery.Core.Services {
 
         private retrieveImageArray(response: ng.IHttpPromiseCallbackArg<any>): BingGallery.Core.Models.ImageManager {
             if (!(response && response.data)) return null;
-            return new BingGallery.Core.Models.ImageManager(response.data.toString());
+            return new BingGallery.Core.Models.ImageManager(response.data);
         }
 
         constructor(private $http: ng.IHttpService) { }
@@ -26,7 +26,7 @@ namespace BingGallery.Core.Services {
             formattedUrl = formattedUrl.replace('{page}', page.toString());
             formattedUrl = formattedUrl.replace('{region}', utils.Constants.REGIONS[region]);
 
-            if (true) formattedUrl = '/www/cache/data.xml';
+            if (false) formattedUrl = '/www/cache/data.xml';
 
             let xhr = this.$http.get(formattedUrl);
             return xhr.then(this.retrieveImageArray);

@@ -8,13 +8,13 @@
         </div>
         <div class="ms-Grid-row">
             <div class="ms-Grid-col">
-                <h2 class="ms-font-su ms-fontColor-themeLighter">Hi there!</h2>
+                <h2 class="ms-font-su ms-fontColor-themeLighter">US Calendar - 2015</h2>
             </div>
         </div>
         <div class="ms-Grid-row">
             <div class="ms-Grid-col">
-                <p class="ms-font-xl ms-fontColor-themeLight">This is an AngularJS template in TypeScript and SASS.</p>
-                <p class="ms-font-m ms-fontColor-themeLight">Customize it to your needs and have fun.</p>
+                <p class="ms-font-xl ms-fontColor-themeLight">Just click on an image to set it as the desktop background.</p>
+                <p class="ms-font-m ms-fontColor-themeLight">Customize your desktop has never been this easy.</p>
             </div>
         </div>
     </div>
@@ -28,7 +28,8 @@
                       md-rowspan="2"
                       md-colspan="2"
                       md-colspan-xs="1"
-                      back-image="{{ 'https://www.bing.com' + tile.url }}">
+                      back-image="{{ 'https://www.bing.com' + tile.url }}"
+                      ng-click="tileCtrl.setBackground(tile)">
             <md-grid-tile-footer><h3>{{tile.copyright}}</h3></md-grid-tile-footer>
         </md-grid-tile>
     </md-grid-list>

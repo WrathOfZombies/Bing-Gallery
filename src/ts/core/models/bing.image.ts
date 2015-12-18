@@ -2,52 +2,63 @@
 /// <reference path="../../../../typings/tsd.d.ts" />
 
 namespace BingGallery.Core.Models {
-    import utils = BingGallery.Utils;
+	import utils = BingGallery.Utils;
 
-    export class ImageManager {
-        private images: utils.Interfaces.IBingImageResult;
+	export class ImageManager {
+		private images: utils.Interfaces.IBingImageResult;
 
-        private parseXML(data: string): utils.Interfaces.IBingImageResult {
-            let parser = new DOMParser();
-            let xml = parser.parseFromString(data, 'text/xml');
-            return this.xml2json<{ images: utils.Interfaces.IBingImageResult }>(xml).images;
-        }
+		private parseXML(data: string): utils.Interfaces.IBingImageResult {
+			let parser = new DOMParser();
+			let xml = parser.parseFromString(data, 'application/xml');
+			return this.xml2json<{ images: utils.Interfaces.IBingImageResult }>(xml).images;
+		}
 
-        constructor(data: string) {
-            this.images = this.parseXML(data);
-        }
+		constructor(data: string) {
+			this.images = this.parseXML(data);
+		}
 
-        get(): Array<utils.Interfaces.IBingImage> {
-            return this.images.image;
-        }
+		get(): Array<utils.Interfaces.IBingImage> {
+			return this.images.image;
+		}
 
-        private xml2json<T>(xml): T {
-            try {
-                let obj = {};
-                if (xml.children.length > 0) {
-                    for (var i = 0; i < xml.children.length; i++) {
-                        var item = xml.children.item(i);
-                        var nodeName = item.nodeName;
+        private xml2json<T>(node: Element | Document): T {
+			try {
+				var data = {};
 
-                        if (typeof (obj[nodeName]) == "undefined") {
-                            obj[nodeName] = this.xml2json(item);
-                        } else {
-                            if (typeof (obj[nodeName].push) == "undefined") {
-                                var old = obj[nodeName];
+				// append a value
+				function Add(name, value) {
+					if (data[name]) {
+						if (data[name].constructor != Array) {
+							data[name] = [data[name]];
+						}
+						data[name][data[name].length] = value;
+					}
+					else {
+						data[name] = value;
+					}
+				};
+	
+				// element attributes
+				var c, cn;
+	
+				// child elements
+				for (c = 0; cn = node.childNodes[c]; c++) {
+					if (cn.nodeType == 1) {
+						if (cn.childNodes.length == 1 && cn.firstChild.nodeType == 3) {
+                            // text value
+							Add(cn.nodeName, cn.firstChild.nodeValue);
+						}
+						else {
+							// sub-object
+							Add(cn.nodeName, this.xml2json(cn));
+						}
+					}
+				}
 
-                                obj[nodeName] = [];
-                                obj[nodeName].push(old);
-                            }
-                            obj[nodeName].push(this.xml2json(item));
-                        }
-                    }
-                } else {
-                    obj = xml.textContent;
-                }
-                return <T>obj;
-            } catch (e) {
-                console.log(e.message);
-            }
-        }
-    }
+				return <T>data;
+			} catch (e) {
+				console.log(e.message);
+			}
+		}
+	}
 }
