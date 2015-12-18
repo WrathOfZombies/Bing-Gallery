@@ -11,6 +11,7 @@ res\screens\windows\SplashScreenPhone.scale-240.png
 www\css\page.css
 www\index.html
 www\js\app.js
+www\js\bootstrapper.js
 www\js\core\models\bing.image.js
 www\js\core\services\bing.service.js
 www\js\utils\constants\regions.js
@@ -27,4 +28,5 @@ www\lib\js\cordova.js
 www\lib\js\jquery.js
 www\lib\js\ng-cordova.js
 www\lib\js\underscore.js
+www\templates\partials\shared\header.html
 www\templates\views\home.html

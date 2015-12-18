@@ -25,6 +25,7 @@
     <Content Include=".gitignore" />
     <Content Include="gulpfile.js" />
     <Content Include="src\html\index.html" />
+    <Content Include="src\html\templates\partials\shared\header.html" />
     <Content Include="src\html\templates\views\home.html" />
   </ItemGroup>
   <ItemGroup>
@@ -53,6 +54,7 @@
     <TypeScriptCompile Include="typings\tsd.d.ts" />
     <TypeScriptCompile Include="typings\underscore\underscore.d.ts" />
   </ItemGroup>
+  <ItemGroup />
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">12.0</VisualStudioVersion>
   </PropertyGroup>
