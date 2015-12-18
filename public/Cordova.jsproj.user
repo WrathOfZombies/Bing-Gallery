@@ -6,6 +6,6 @@
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Android'">
     <DebuggerFlavor>AndroidEmulator</DebuggerFlavor>
-    <AndroidEmulatorID>363F7AED-462C-46BD-9FEC-F1DD3B79916C;VS Emulator 5" KitKat (4.4) XXHDPI Phone</AndroidEmulatorID>
+    <AndroidEmulatorID>4B675905-D130-4929-91C8-FC62E9C03A24;VS Emulator 5.7" Marshmallow (6.0.0) XHDPI Phone</AndroidEmulatorID>
   </PropertyGroup>
 </Project>
