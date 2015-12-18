@@ -10,7 +10,7 @@ namespace BingGallery.Core {
 	* Helper to find html template paths. Can be invoked using BingGallery.resolvePath()
 	*/
 	export function resolvePath(path: string): string {
-		return 'templates/' + path + '.html';
+		return '/www/templates/' + path + '.html';
 	}
 
 	/**
