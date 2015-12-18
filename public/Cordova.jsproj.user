@@ -2,5 +2,6 @@
 <Project ToolsVersion="14.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <ShowAllFiles>true</ShowAllFiles>
+    <ReferenceCachePath>C:\Users\bhkrish\AppData\Local\Temp\bpu32zsi_Cordova_refcache</ReferenceCachePath>
   </PropertyGroup>
 </Project>
