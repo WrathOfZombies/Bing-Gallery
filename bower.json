@@ -4,9 +4,13 @@
   "dependencies": {
     "jquery": "^2.1.4",
     "angular": "^1.4.8",
-    "angular-ui-router": "*",
-    "angular-material": "*",
-    "underscore": "*"    
+    "angular-animate": "^1.4.8",
+    "angular-messages": "^1.4.8",
+    "angular-aria": "^1.4.8",
+    "angular-ui-router": "^0.2.15",
+    "angular-material": "^1.0.1",
+    "underscore": "^1.8.3",
+    "system.js": "^0.19.9"
   },
   "overrides": {
     "jquery": {

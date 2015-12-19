@@ -1,0 +1,32 @@
+{
+    "version": "1.8",
+    "compileOnSave": false,
+    "compilerOptions": {
+        "target": "es5",
+        "module": "system",
+        "declaration": false,
+        "noImplicitAny": false,
+        "removeComments": false,
+        "inlineSourceMap": true,
+        "outDir": "./public/www/js"
+    },
+    "filesGlob": [
+        "./src/**/*.ts",
+        "./typings/tsd.d.ts"
+    ],
+    "exclude": [
+        "node_modules",
+        "bower_components"
+    ],
+    "files": [
+        "./typings/tsd.d.ts",
+        "./src/ts/app.ts",
+        "./src/ts/bootstrapper.ts",
+        "./src/ts/core/controllers/home.controller.ts",
+        "./src/ts/core/models/bing.image.ts",
+        "./src/ts/core/services/bing.service.ts",
+        "./src/ts/utils/constants/regions.ts",
+        "./src/ts/utils/types/enumerations.ts",
+        "./src/ts/utils/types/interfaces.ts"
+    ]
+}

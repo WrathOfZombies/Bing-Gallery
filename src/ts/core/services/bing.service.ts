@@ -1,6 +1,3 @@
-/// <reference path="../../../../_references.d.ts" />
-/// <reference path="../../../../typings/tsd.d.ts" />
-
 namespace BingGallery.Core.Services {
     import utils = BingGallery.Utils;
 
@@ -26,7 +23,7 @@ namespace BingGallery.Core.Services {
             formattedUrl = formattedUrl.replace('{page}', page.toString());
             formattedUrl = formattedUrl.replace('{region}', utils.Constants.REGIONS[region]);
 
-            if (false) formattedUrl = '/www/cache/data.xml';
+            // if (false) formattedUrl = '/www/cache/data.xml';
 
             let xhr = this.$http.get(formattedUrl);
             return xhr.then(this.retrieveImageArray);

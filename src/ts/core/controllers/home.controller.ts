@@ -1,14 +1,9 @@
-﻿/// <reference path="../../../../_references.d.ts" />
-/// <reference path="../../../../typings/tsd.d.ts" />
-
-namespace BingGallery.Core.Controllers {
+﻿namespace BingGallery.Core.Controllers {
     export class HomeController {
         tiles: Array<any> = [];
 
         constructor(private bingImageService: BingGallery.Core.Services.BingImageService) {
-            for (let i = 7, n; n = i + 1, i < 500; i += 7) {
-                bingImageService.getImagesFromCalendar(i, n).then((images) => { this.renderImages(images) });
-            }
+            bingImageService.getImagesFromCalendar(8).then((images) => { this.renderImages(images) });
         }
 
         renderImages(images: Core.Models.ImageManager) {
@@ -21,7 +16,6 @@ namespace BingGallery.Core.Controllers {
             }
 
             tiles.forEach((tile) => {
-                console.log(tile);
                 this.tiles.push(tile);
             });
         }

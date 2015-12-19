@@ -1,6 +1,3 @@
-/// <reference path="../../../../_references.d.ts" />
-/// <reference path="../../../../typings/tsd.d.ts" />
-
 namespace BingGallery.Utils.Constants {
 	export let REGIONS: BingGallery.Utils.Interfaces.IEnumDictionary = {
 		0: 'ar-XA',

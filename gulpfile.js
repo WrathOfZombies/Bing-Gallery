@@ -9,8 +9,8 @@ var gulp = require('gulp'),
     sass = require('gulp-sass'),
 
     inject = require('gulp-inject'),
-    tsc = require('gulp-tsc'),
-    sourcemaps = require('gulp-sourcemaps'),
+    typescript = require('gulp-tsc'),
+    tsConfig = require('tsconfig-glob'),
     merge = require('merge2'),
 
     connect = require('gulp-connect'),
@@ -62,31 +62,23 @@ gulp.task('compile:sass', ['clean:sass'], function () {
 });
 
 gulp.task('generate-references', ['clean:ts'], function () {
-    var target = gulp.src(config.ts.references);
-    var sources = gulp.src([config.ts.input], { read: false });
-    return target
-        .pipe(plumber(errorHandler))
-        .pipe(inject(sources, {
-            starttag: '//{',
-            endtag: '//}',
-            addRootSlash: false,
-            transform: function (filepath) {
-                return '/// <reference path="' + filepath + '" />';
-            }
-        }))
-        .pipe(gulp.dest('./'));
+    return tsConfig();
 });
 
 gulp.task('compile:ts', ['generate-references'], function () {
     return gulp.src(config.ts.input)
         .pipe(plumber(errorHandler))
-        .pipe(tsc({
-            target: 'ES5',
-            sourceMap: true,
+        .pipe(typescript({
+            target: "es5",
+            module: "system",
+            declaration: false,
+            noImplicitAny: false,
+            removeComments: false,
+            inlineSourceMap: true,
             outDir: config.ts.output
         }))
         .pipe(gulp.dest(config.ts.output))
-        .pipe(connect.reload());    
+        .pipe(connect.reload());
 });
 
 gulp.task('copy:html', ['clean:html'], function () {

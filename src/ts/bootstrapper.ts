@@ -1,11 +1,8 @@
-/// <reference path="../../_references.d.ts" />
-/// <reference path="../../typings/tsd.d.ts" />
-
 namespace BingGallery.Core {
-    import enums = BingGallery.Utils.Enumerations;
     import app = BingGallery.Core.App;
+    import enums = BingGallery.Utils.Enumerations;
 
-    let context: enums.Context;
+    export let context: enums.Context;
 
     export function startApplication() {
         let isCordova = document.URL.indexOf('http://') === -1 && document.URL.indexOf('https://') === -1,

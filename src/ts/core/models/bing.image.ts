@@ -1,6 +1,3 @@
-/// <reference path="../../../../_references.d.ts" />
-/// <reference path="../../../../typings/tsd.d.ts" />
-
 namespace BingGallery.Core.Models {
 	import utils = BingGallery.Utils;
 
@@ -37,10 +34,10 @@ namespace BingGallery.Core.Models {
 						data[name] = value;
 					}
 				};
-	
+
 				// element attributes
 				var c, cn;
-	
+
 				// child elements
 				for (c = 0; cn = node.childNodes[c]; c++) {
 					if (cn.nodeType == 1) {

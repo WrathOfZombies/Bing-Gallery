@@ -1,6 +1,3 @@
-/// <reference path="../../../../_references.d.ts" />
-/// <reference path="../../../../typings/tsd.d.ts" />
-
 namespace BingGallery.Utils.Interfaces {
     export interface IEnumDictionary {
         [index: number]: string
