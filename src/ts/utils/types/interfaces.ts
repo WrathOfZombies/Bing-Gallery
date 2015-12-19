@@ -1,4 +1,4 @@
-namespace BingGallery.Utils.Interfaces {
+module BingGallery.Types.Interfaces {
     export interface IEnumDictionary {
         [index: number]: string
     }

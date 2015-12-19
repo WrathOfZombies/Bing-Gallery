@@ -1,4 +1,6 @@
-﻿namespace BingGallery.Core.Controllers {
+﻿module BingGallery.Core.Controllers {
+    import types = BingGallery.Types;
+
     export class HomeController {
         tiles: Array<any> = [];
 
@@ -20,7 +22,7 @@
             });
         }
 
-        setBackground(tile: Utils.Interfaces.IBingImage) {
+        setBackground(tile: types.Interfaces.IBingImage) {
             var url = 'https://www.bing.com' + tile.urlBase + '_1920x1080.jpg';
 
             if (window.hasOwnProperty('Windows')) {

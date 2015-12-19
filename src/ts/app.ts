@@ -1,4 +1,6 @@
-namespace BingGallery.Core {
+module BingGallery {
+    import core = BingGallery.Core;
+
     export function resolvePath(path: string): string {
         return '/www/templates/' + path + '.html';
     }
@@ -7,8 +9,8 @@ namespace BingGallery.Core {
 
     export class App {
         private registerComponents() {
-            this.module.factory('BingImageService', ['$http', ($http: ng.IHttpService) => { return new BingGallery.Core.Services.BingImageService($http); }]);
-            this.module.controller('HomeController', ['BingImageService', BingGallery.Core.Controllers.HomeController]);
+            this.module.factory('BingImageService', ['$http', ($http: ng.IHttpService) => { return new core.Services.BingImageService($http); }]);
+            this.module.controller('HomeController', ['BingImageService', core.Controllers.HomeController]);
             this.module.directive('backImage', function () {
                 return function (scope, element, attrs) {
                     var url = attrs.backImage;
@@ -45,7 +47,7 @@ namespace BingGallery.Core {
         }
 
         run() {
-            this.module.run(['$state', 'BingImageService', ($state: ng.ui.IStateService, BingImageService: BingGallery.Core.Services.BingImageService) => {
+            this.module.run(['$state', 'BingImageService', ($state: ng.ui.IStateService, BingImageService: core.Services.BingImageService) => {
                 $state.go('home');
             }]);
         }

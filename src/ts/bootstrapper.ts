@@ -1,7 +1,7 @@
-namespace BingGallery.Core {
-    import app = BingGallery.Core.App;
-    import enums = BingGallery.Utils.Enumerations;
-
+module BingGallery {
+    import app = BingGallery.startApplication;
+    import enums = BingGallery.Types.Enumerations;
+    
     export let context: enums.Context;
 
     export function startApplication() {
@@ -42,4 +42,4 @@ namespace BingGallery.Core {
     }
 }
 
-BingGallery.Core.startApplication();
+BingGallery.startApplication();

@@ -1,5 +1,5 @@
-namespace BingGallery.Utils.Constants {
-	export let REGIONS: BingGallery.Utils.Interfaces.IEnumDictionary = {
+module BingGallery.Constants {
+	export let REGIONS: BingGallery.Types.Interfaces.IEnumDictionary = {
 		0: 'ar-XA',
 		1: 'bg-BG',
 		2: 'cs-CZ',

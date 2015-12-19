@@ -1,19 +1,18 @@
 {
-    "version": "1.8",
     "compileOnSave": false,
     "compilerOptions": {
-        "target": "es5",
-        "module": "system",
         "declaration": false,
+        "emitDecoratorMetadata": true,
+        "experimentalDecorators": true,
+        "module": "system",
+        "moduleResolution": "node",
+        "noEmitOnError": true,
         "noImplicitAny": false,
+        "outDir": "./public/www/js",
         "removeComments": false,
-        "inlineSourceMap": true,
-        "outDir": "./public/www/js"
+        "rootDir": "./src/ts",
+        "target": "es5"
     },
-    "filesGlob": [
-        "./src/**/*.ts",
-        "./typings/tsd.d.ts"
-    ],
     "exclude": [
         "node_modules",
         "bower_components"
@@ -28,5 +27,10 @@
         "./src/ts/utils/constants/regions.ts",
         "./src/ts/utils/types/enumerations.ts",
         "./src/ts/utils/types/interfaces.ts"
-    ]
+    ],
+    "filesGlob": [
+        "./src/**/*.ts",
+        "./typings/tsd.d.ts"
+    ],
+    "version": "1.8"
 }

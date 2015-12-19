@@ -9,8 +9,9 @@ var gulp = require('gulp'),
     sass = require('gulp-sass'),
 
     inject = require('gulp-inject'),
-    typescript = require('gulp-tsc'),
-    tsConfig = require('tsconfig-glob'),
+    typescript = require('gulp-typescript'),
+    sourcemaps = require('gulp-sourcemaps'),
+    tsConfigGlob = require('tsconfig-glob'),
     merge = require('merge2'),
 
     connect = require('gulp-connect'),
@@ -19,6 +20,8 @@ var gulp = require('gulp'),
         console.log(error);
         this.emit('end');
     };
+
+var tsProject = typescript.createProject('./tsconfig.json', { sortOutput: true });
 
 gulp.task('clean:bower', function (done) {
     return del(['./bower_components', './lib'], done);
@@ -62,21 +65,17 @@ gulp.task('compile:sass', ['clean:sass'], function () {
 });
 
 gulp.task('generate-references', ['clean:ts'], function () {
-    return tsConfig();
+    return tsConfigGlob();
 });
 
 gulp.task('compile:ts', ['generate-references'], function () {
-    return gulp.src(config.ts.input)
+    var tsResult = tsProject.src()
+        .pipe(sourcemaps.init())
         .pipe(plumber(errorHandler))
-        .pipe(typescript({
-            target: "es5",
-            module: "system",
-            declaration: false,
-            noImplicitAny: false,
-            removeComments: false,
-            inlineSourceMap: true,
-            outDir: config.ts.output
-        }))
+        .pipe(typescript(tsProject));
+
+    tsResult.js
+        .pipe(sourcemaps.write())
         .pipe(gulp.dest(config.ts.output))
         .pipe(connect.reload());
 });

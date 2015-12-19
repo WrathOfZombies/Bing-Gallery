@@ -1,54 +1,58 @@
 ﻿<html lang="en" ng-csp>
 
 <head>
-	<meta charset="UTF-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=Edge">
-	<meta name="description" content="Applciation that allows people to save the bing wallpapers as images">
-	<meta name="author" content="Bhargav Krishna">
-	<base href="/">
-	<title>Bing Gallery Application</title>
-	
-	<!-- CSS Libraries -->
-	<link rel="stylesheet" href="/www/lib/css/angular-material.css">
-	
-	<!-- CSS Application -->
-	<link rel="stylesheet" href="/www/css/page.css">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+    <meta name="description" content="Applciation that allows people to save the bing wallpapers as images">
+    <meta name="author" content="Bhargav Krishna">
+    <base href="/">
+    <title>Bing Gallery Application</title>
+
+    <!-- CSS Libraries -->
+    <link rel="stylesheet" href="/www/lib/css/angular-material.css">
+
+    <!-- CSS Application -->
+    <link rel="stylesheet" href="/www/css/page.css">
 </head>
 
 <body class="ms-font-l">
-	<div ui-view></div>
+    <div ui-view></div>
 
-	<script type="text/javascript" src="/www/lib/js/system.js"></script>
+    <script type="text/javascript" src="/www/lib/js/system.js"></script>
     <script>
         System.config({
-            baseUrl: '/www',
             transpiler: 'none',
+            packages: {
+                'www/js': {
+                    format: 'register',
+                    defaultExtension: 'js'
+                }
+            }
         });
-
-        System.import('www/js/bootstrapper.js');
+        System.import('www/js/bootstrapper.js')
+            .then(null, console.error.bind(console));
     </script>
 
-	<!-- JS Libraries -->
-	<!--<script type="text/javascript" src="/www/lib/js/jquery.js"></script>
-	<script type="text/javascript" src="/www/lib/js/angular.js"></script>
-	<script type="text/javascript" src="/www/lib/js/angular-aria.js"></script>
-	<script type="text/javascript" src="/www/lib/js/angular-animate.js"></script>
-	<script type="text/javascript" src="/www/lib/js/angular-material.js"></script>
-	<script type="text/javascript" src="/www/lib/js/angular-ui-router.js"></script>
-	<script type="text/javascript" src="/www/lib/js/underscore.js"></script>-->
+    <!-- JS Libraries -->
+    <!--<script type="text/javascript" src="/www/lib/js/jquery.js"></script>
+    <script type="text/javascript" src="/www/lib/js/angular.js"></script>
+    <script type="text/javascript" src="/www/lib/js/angular-aria.js"></script>
+    <script type="text/javascript" src="/www/lib/js/angular-animate.js"></script>
+    <script type="text/javascript" src="/www/lib/js/angular-material.js"></script>
+    <script type="text/javascript" src="/www/lib/js/angular-ui-router.js"></script>
+    <script type="text/javascript" src="/www/lib/js/underscore.js"></script>-->
+    <!-- JS Application -->
+    <!--<script type="text/javascript" src="/www/js/utils/types/enumerations.js"></script>
+    <script type="text/javascript" src="/www/js/utils/types/interfaces.js"></script>
+    <script type="text/javascript" src="/www/js/utils/constants/regions.js"></script>
 
-	<!-- JS Application -->
-	<!--<script type="text/javascript" src="/www/js/utils/types/enumerations.js"></script>
-	<script type="text/javascript" src="/www/js/utils/types/interfaces.js"></script>
-	<script type="text/javascript" src="/www/js/utils/constants/regions.js"></script>
+    <script type="text/javascript" src="/www/js/core/models/bing.image.js"></script>
+    <script type="text/javascript" src="/www/js/core/services/bing.service.js"></script>
 
-	<script type="text/javascript" src="/www/js/core/models/bing.image.js"></script>
-	<script type="text/javascript" src="/www/js/core/services/bing.service.js"></script>
+    <script type="text/javascript" src="/www/js/core/controllers/home.controller.js"></script>
 
-	<script type="text/javascript" src="/www/js/core/controllers/home.controller.js"></script>
-
-	<script type="text/javascript" src="/www/js/app.js"></script>
-	<script type="text/javascript" src="/www/js/bootstrapper.js"></script>-->
+    <script type="text/javascript" src="/www/js/app.js"></script>
+    <script type="text/javascript" src="/www/js/bootstrapper.js"></script>-->
 </body>
 
 </html>

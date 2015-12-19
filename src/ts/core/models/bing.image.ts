@@ -1,20 +1,20 @@
-namespace BingGallery.Core.Models {
-	import utils = BingGallery.Utils;
+module BingGallery.Core.Models {
+	import types = BingGallery.Types;
 
 	export class ImageManager {
-		private images: utils.Interfaces.IBingImageResult;
+		private images: types.Interfaces.IBingImageResult;
 
-		private parseXML(data: string): utils.Interfaces.IBingImageResult {
+		private parseXML(data: string): types.Interfaces.IBingImageResult {
 			let parser = new DOMParser();
 			let xml = parser.parseFromString(data, 'application/xml');
-			return this.xml2json<{ images: utils.Interfaces.IBingImageResult }>(xml).images;
+			return this.xml2json<{ images: types.Interfaces.IBingImageResult }>(xml).images;
 		}
 
 		constructor(data: string) {
 			this.images = this.parseXML(data);
 		}
 
-		get(): Array<utils.Interfaces.IBingImage> {
+		get(): Array<types.Interfaces.IBingImage> {
 			return this.images.image;
 		}
 

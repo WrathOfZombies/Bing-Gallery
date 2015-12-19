@@ -1,5 +1,6 @@
-namespace BingGallery.Core.Services {
-    import utils = BingGallery.Utils;
+module BingGallery.Core.Services {
+    import types = BingGallery.Types;
+    import consts = BingGallery.Constants;
 
     export class BingImageService {
         private url: string = 'https://www.bing.com/HPImageArchive.aspx?format=xml&n={count}&idx={page}&mkt={region}';
@@ -14,14 +15,14 @@ namespace BingGallery.Core.Services {
         getImagesFromCalendar(
             count: number = 1,
             page: number = 0,
-            region: utils.Enumerations.Regions = utils.Enumerations.Regions.UnitedStatesEN
+            region: types.Enumerations.Regions = types.Enumerations.Regions.UnitedStatesEN
         ) {
             if (count < 0 || page < 0) return null;
 
             let formattedUrl = this.url;
             formattedUrl = formattedUrl.replace('{count}', count.toString());
             formattedUrl = formattedUrl.replace('{page}', page.toString());
-            formattedUrl = formattedUrl.replace('{region}', utils.Constants.REGIONS[region]);
+            formattedUrl = formattedUrl.replace('{region}', consts.REGIONS[region]);
 
             // if (false) formattedUrl = '/www/cache/data.xml';
 

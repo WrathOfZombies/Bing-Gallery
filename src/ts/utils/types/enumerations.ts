@@ -1,4 +1,4 @@
-module BingGallery.Utils.Enumerations {
+module BingGallery.Types.Enumerations {
 	export enum Context {
 		Web,
 		Windows,
