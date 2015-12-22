@@ -4,8 +4,8 @@
       "dest":"www\\lib"
   },
   "app": {
-      "source": "app",
-      "dest": "www\\app"
+      "source": "src",
+      "dest": "www"
   },
   "server": {
     "root": "www",
