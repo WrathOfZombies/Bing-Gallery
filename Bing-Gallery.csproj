@@ -37,32 +37,9 @@
     <Content Include="tsd.json" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="src\ts\app.ts" />
-    <None Include="src\ts\core\models\bing.image.ts" />
-    <None Include="src\ts\core\services\bing.service.ts" />
-    <None Include="src\ts\utils\constants\regions.ts" />
-    <None Include="src\ts\utils\types\enumerations.ts" />
-    <None Include="src\ts\utils\types\interfaces.ts" />
-    <Content Include="web.config" />
+    <None Include="src\**\*.ts" />
+    <None Include="public\www\**\*.*" />
     <Content Include="tsconfig.json" />
-    <None Include="web.Debug.config">
-      <DependentUpon>web.config</DependentUpon>
-    </None>
-    <None Include="web.Release.config">
-      <DependentUpon>web.config</DependentUpon>
-    </None>
-    <None Include="_references.d.ts" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="src\ts\bootstrapper.ts" />
-    <None Include="src\ts\core\controllers\home.controller.ts" />
-    <None Include="typings\angular-material\angular-material.d.ts" />
-    <None Include="typings\angular-ui-router\angular-ui-router.d.ts" />
-    <None Include="typings\angularjs\angular-animate.d.ts" />
-    <None Include="typings\angularjs\angular.d.ts" />
-    <None Include="typings\jquery\jquery.d.ts" />
-    <None Include="typings\tsd.d.ts" />
-    <None Include="typings\underscore\underscore.d.ts" />
   </ItemGroup>
   <ItemGroup />
   <PropertyGroup>

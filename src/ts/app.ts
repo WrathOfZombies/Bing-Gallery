@@ -43,7 +43,6 @@ export class App {
     }
 
     constructor(private module: ng.IModule) {
-        console.log('Creating');
         this.registerComponents();
         this.configureComponents();
         this.run();

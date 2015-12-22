@@ -13,6 +13,18 @@ var config: RequireConfig = {
         'angular-ui-router': {
             deps: ['angular']
         },
+        'angular-animate': {
+            deps: ['angular']
+        },
+        'angular-messages': {
+            deps: ['angular']
+        },
+        'angular-aria': {
+            deps: ['angular']
+        },
+        'angular-material': {
+            deps: ['angular']
+        },
         'underscore': {
             exports: '_'
         }
@@ -24,6 +36,8 @@ var config: RequireConfig = {
 
 requirejs.config(config);
 
-requirejs(['jquery', 'angular', 'underscore', 'angular-ui-router', 'app/bootstrapper'], ($, _, angular, ui, main) => {
-    main.BootStrap.bootstrap();
+requirejs(['jquery', 'app/bootstrapper', 'angular', 'underscore', 'angular-ui-router', 'angular-animate', 'angular-aria', 'angular-material', 'angular-messages'], ($, main) => {
+    $(document).ready(() => {
+        main.BootStrap.bootstrap();
+    });
 });

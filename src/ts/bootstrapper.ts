@@ -42,7 +42,7 @@ export class BootStrap {
     }
 
     static bootstrap() {
-        let module = angular.module('BingGallery', ['ui.router']);
+        let module = angular.module('BingGallery', ['ui.router', 'ngAnimate', 'ngMessages', 'ngAria', 'ngMaterial']);
 
         if (!(document && angular)) return;
         new App(module);
