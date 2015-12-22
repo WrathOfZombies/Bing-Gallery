@@ -8,7 +8,6 @@ var gulp = require('gulp'),
 
     sass = require('gulp-sass'),
 
-    inject = require('gulp-inject'),
     typescript = require('gulp-typescript'),
     sourcemaps = require('gulp-sourcemaps'),
     tsConfigGlob = require('tsconfig-glob'),

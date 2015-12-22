@@ -1,28 +1,29 @@
-module BingGallery {
-    import app = BingGallery.startApplication;
-    import enums = BingGallery.Types.Enumerations;
-    
-    export let context: enums.Context;
+'use strict';
 
-    export function startApplication() {
+import {App} from './app';
+
+export class BootStrap {
+    static context: string;
+
+    constructor() {
         let isCordova = document.URL.indexOf('http://') === -1 && document.URL.indexOf('https://') === -1,
             isWindows = window.hasOwnProperty('Windows');
 
         if (isCordova && !isWindows) {
-            context = enums.Context.Cordova;
-            cordovaLaunch();
+            BootStrap.context = 'Cordova';
+            BootStrap.cordovaLaunch();
         }
         else if (isWindows) {
-            context = enums.Context.Windows;
-            App.bootstrap();
+            BootStrap.context = 'Windows';
+            BootStrap.bootstrap();
         }
         else {
-            context = enums.Context.Web;
-            App.bootstrap();
+            BootStrap.context = 'Web';
+            BootStrap.bootstrap();
         }
     }
 
-    function cordovaLaunch() {
+    static cordovaLaunch() {
         let onPause = (event) => {
 
         };
@@ -34,12 +35,20 @@ module BingGallery {
         let onDeviceReady = (event) => {
             document.addEventListener('pause', onPause);
             document.addEventListener('resume', onResume);
-
-            App.bootstrap();
+            BootStrap.bootstrap();
         };
 
         document.addEventListener('deviceready', onDeviceReady);
     }
-}
 
-BingGallery.startApplication();
+    static bootstrap() {
+        let module = angular.module('BingGallery', ['ui.router']);
+
+        if (!(document && angular)) return;
+        new App(module);
+
+        angular.element(document).ready(() => {
+            angular.bootstrap(document, ['BingGallery']);
+        });
+    }
+}

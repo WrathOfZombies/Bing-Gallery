@@ -1,64 +1,57 @@
-module BingGallery {
-    import core = BingGallery.Core;
+'use strict';
 
-    export function resolvePath(path: string): string {
-        return '/www/templates/' + path + '.html';
+import $ = require('jquery');
+import angular = require('angular');
+import ui = require('angular-ui-router');
+import {HomeController} from './core/controllers/home.controller';
+import {BingImageService} from './core/services/bing.service';
+
+function resolvePath(path: string): string {
+    return '/www/templates/' + path + '.html';
+}
+
+export class App {
+    private registerComponents() {
+        this.module.factory('BingImageService', ['$http', ($http: ng.IHttpService) => { return new BingImageService($http); }]);
+        this.module.controller('HomeController', ['BingImageService', HomeController]);
+        this.module.directive('backImage', function() {
+            return function(scope, element, attrs) {
+                var url = attrs.backImage;
+                element.css({
+                    'background-image': 'url(' + url + ')',
+                    'background-size': 'cover'
+                });
+            };
+        });
     }
 
-    export let module = angular.module('BingGallery', ['ngAnimate', 'ngMaterial', 'ui.router']);
+    private registerStates(
+        $stateProvider: ng.ui.IStateProvider,
+        $locationProvider: ng.ILocationProvider
+    ) {
+        $stateProvider.state('home', {
+            templateUrl: resolvePath('views/home'),
+            controller: 'HomeController',
+            controllerAs: 'home'
+        });
 
-    export class App {
-        private registerComponents() {
-            this.module.factory('BingImageService', ['$http', ($http: ng.IHttpService) => { return new core.Services.BingImageService($http); }]);
-            this.module.controller('HomeController', ['BingImageService', core.Controllers.HomeController]);
-            this.module.directive('backImage', function () {
-                return function (scope, element, attrs) {
-                    var url = attrs.backImage;
-                    element.css({
-                        'background-image': 'url(' + url + ')',
-                        'background-size': 'cover'
-                    });
-                };
-            });
-        }
+        $locationProvider.html5Mode(true).hashPrefix('!');
+    }
 
-        private registerStates(
-            $stateProvider: ng.ui.IStateProvider,
-            $locationProvider: ng.ILocationProvider
-        ) {
-            $stateProvider.state('home', {
-                templateUrl: resolvePath('views/home'),
-                controller: 'HomeController',
-                controllerAs: 'home'
-            });
+    private configureComponents() {
+        this.module.config(['$stateProvider', '$locationProvider', this.registerStates]);
+    }
 
-            $locationProvider.html5Mode(true).hashPrefix('!');
-        }
+    constructor(private module: ng.IModule) {
+        console.log('Creating');
+        this.registerComponents();
+        this.configureComponents();
+        this.run();
+    }
 
-        private configureComponents() {
-            this.module.config(['$stateProvider', '$locationProvider', this.registerStates]);
-        }
-
-        constructor(private module: ng.IModule) {
-            console.log('Creating');
-            this.registerComponents();
-            this.configureComponents();
-            this.run();
-        }
-
-        run() {
-            this.module.run(['$state', 'BingImageService', ($state: ng.ui.IStateService, BingImageService: core.Services.BingImageService) => {
-                $state.go('home');
-            }]);
-        }
-
-        static bootstrap() {
-            if (!(document && angular)) return;
-            new App(module);
-
-            angular.element(document).ready(() => {
-                angular.bootstrap(document, ['BingGallery']);
-            });
-        }
+    run() {
+        this.module.run(['$state', 'BingImageService', ($state: ng.ui.IStateService, BingImageService: BingImageService) => {
+            $state.go('home');
+        }]);
     }
 }

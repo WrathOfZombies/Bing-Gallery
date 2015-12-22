@@ -1,33 +1,34 @@
-module BingGallery.Core.Services {
-    import types = BingGallery.Types;
-    import consts = BingGallery.Constants;
+'use strict';
 
-    export class BingImageService {
-        private url: string = 'https://www.bing.com/HPImageArchive.aspx?format=xml&n={count}&idx={page}&mkt={region}';
+import {Regions} from '../../utils/types/enumerations';
+import {REGIONS} from '../../utils/constants/regions';
+import {ImageManager} from '../models/bing.image';
 
-        private retrieveImageArray(response: ng.IHttpPromiseCallbackArg<any>): BingGallery.Core.Models.ImageManager {
-            if (!(response && response.data)) return null;
-            return new BingGallery.Core.Models.ImageManager(response.data);
-        }
+export class BingImageService {
+    private url: string = 'https://www.bing.com/HPImageArchive.aspx?format=xml&n={count}&idx={page}&mkt={region}';
 
-        constructor(private $http: ng.IHttpService) { }
+    private retrieveImageArray(response: ng.IHttpPromiseCallbackArg<any>): ImageManager {
+        if (!(response && response.data)) return null;
+        return new ImageManager(response.data);
+    }
 
-        getImagesFromCalendar(
-            count: number = 1,
-            page: number = 0,
-            region: types.Enumerations.Regions = types.Enumerations.Regions.UnitedStatesEN
-        ) {
-            if (count < 0 || page < 0) return null;
+    constructor(private $http: ng.IHttpService) { }
 
-            let formattedUrl = this.url;
-            formattedUrl = formattedUrl.replace('{count}', count.toString());
-            formattedUrl = formattedUrl.replace('{page}', page.toString());
-            formattedUrl = formattedUrl.replace('{region}', consts.REGIONS[region]);
+    getImagesFromCalendar(
+        count: number = 1,
+        page: number = 0,
+        region: Regions = Regions.UnitedStatesEN
+    ) {
+        if (count < 0 || page < 0) return null;
 
-            // if (false) formattedUrl = '/www/cache/data.xml';
+        let formattedUrl = this.url;
+        formattedUrl = formattedUrl.replace('{count}', count.toString());
+        formattedUrl = formattedUrl.replace('{page}', page.toString());
+        formattedUrl = formattedUrl.replace('{region}', REGIONS[region]);
 
-            let xhr = this.$http.get(formattedUrl);
-            return xhr.then(this.retrieveImageArray);
-        }
+        if (true) formattedUrl = '/www/cache/data.xml';
+
+        let xhr = this.$http.get(formattedUrl);
+        return xhr.then(this.retrieveImageArray);
     }
 }

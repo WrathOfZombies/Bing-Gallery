@@ -1,61 +1,61 @@
-module BingGallery.Core.Models {
-	import types = BingGallery.Types;
+'use strict';
 
-	export class ImageManager {
-		private images: types.Interfaces.IBingImageResult;
+import {IBingImageResult, IBingImage} from '../../utils/types/interfaces';
 
-		private parseXML(data: string): types.Interfaces.IBingImageResult {
-			let parser = new DOMParser();
-			let xml = parser.parseFromString(data, 'application/xml');
-			return this.xml2json<{ images: types.Interfaces.IBingImageResult }>(xml).images;
-		}
+export class ImageManager {
+    private images: IBingImageResult;
 
-		constructor(data: string) {
-			this.images = this.parseXML(data);
-		}
+    private parseXML(data: string): IBingImageResult {
+        let parser = new DOMParser();
+        let xml = parser.parseFromString(data, 'application/xml');
+        return this.xml2json<{ images: IBingImageResult }>(xml).images;
+    }
 
-		get(): Array<types.Interfaces.IBingImage> {
-			return this.images.image;
-		}
+    constructor(data: string) {
+        this.images = this.parseXML(data);
+    }
 
-		private xml2json<T>(node: Element | Document): T {
-			try {
-				var data = {};
+    get(): Array<IBingImage> {
+        return this.images.image;
+    }
 
-				// append a value
-				function Add(name, value) {
-					if (data[name]) {
-						if (data[name].constructor != Array) {
-							data[name] = [data[name]];
-						}
-						data[name][data[name].length] = value;
-					}
-					else {
-						data[name] = value;
-					}
-				};
+    private xml2json<T>(node: Element | Document): T {
+        try {
+            var data = {};
 
-				// element attributes
-				var c, cn;
+            // append a value
+            function Add(name, value) {
+                if (data[name]) {
+                    if (data[name].constructor != Array) {
+                        data[name] = [data[name]];
+                    }
+                    data[name][data[name].length] = value;
+                }
+                else {
+                    data[name] = value;
+                }
+            };
 
-				// child elements
-				for (c = 0; cn = node.childNodes[c]; c++) {
-					if (cn.nodeType == 1) {
-						if (cn.childNodes.length == 1 && cn.firstChild.nodeType == 3) {
-							// text value
-							Add(cn.nodeName, cn.firstChild.nodeValue);
-						}
-						else {
-							// sub-object
-							Add(cn.nodeName, this.xml2json(cn));
-						}
-					}
-				}
+            // element attributes
+            var c, cn;
 
-				return <T>data;
-			} catch (e) {
-				console.log(e.message);
-			}
-		}
-	}
+            // child elements
+            for (c = 0; cn = node.childNodes[c]; c++) {
+                if (cn.nodeType == 1) {
+                    if (cn.childNodes.length == 1 && cn.firstChild.nodeType == 3) {
+                        // text value
+                        Add(cn.nodeName, cn.firstChild.nodeValue);
+                    }
+                    else {
+                        // sub-object
+                        Add(cn.nodeName, this.xml2json(cn));
+                    }
+                }
+            }
+
+            return <T>data;
+        } catch (e) {
+            console.log(e.message);
+        }
+    }
 }

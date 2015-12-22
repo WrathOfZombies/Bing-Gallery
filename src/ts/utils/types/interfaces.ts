@@ -1,31 +1,31 @@
-module BingGallery.Types.Interfaces {
-    export interface IEnumDictionary {
-        [index: number]: string
-    }
+'use strict';
 
-    export interface IBingImageResult {
-        image: Array<IBingImage>;
-    }
+export interface IEnumDictionary {
+    [index: number]: string
+}
 
-    export interface IBingImage {
-        startDate: Date,
-        endDate: Date,
-        fullStartDate: Date,
-        url: string,
-        urlBase: string,
-        copyright: string,
-        copyrightLink: string,
-        drk: number,
-        top: number,
-        bot: number,
-        hotspots: Array<IBingImageHotspot>;
-    }
+export interface IBingImageResult {
+    image: Array<IBingImage>;
+}
 
-    export interface IBingImageHotspot {
-        desc: string,
-        link: string,
-        query: string,
-        locX: number,
-        locY: number
-    }
+export interface IBingImage {
+    startDate: Date,
+    endDate: Date,
+    fullStartDate: Date,
+    url: string,
+    urlBase: string,
+    copyright: string,
+    copyrightLink: string,
+    drk: number,
+    top: number,
+    bot: number,
+    hotspots: Array<IBingImageHotspot>;
+}
+
+export interface IBingImageHotspot {
+    desc: string,
+    link: string,
+    query: string,
+    locX: number,
+    locY: number
 }

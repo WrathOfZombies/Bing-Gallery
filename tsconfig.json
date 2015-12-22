@@ -4,7 +4,7 @@
         "declaration": false,
         "emitDecoratorMetadata": true,
         "experimentalDecorators": true,
-        "module": "system",
+        "module": "amd",
         "moduleResolution": "node",
         "noEmitOnError": true,
         "noImplicitAny": false,
@@ -24,6 +24,7 @@
         "./src/ts/core/controllers/home.controller.ts",
         "./src/ts/core/models/bing.image.ts",
         "./src/ts/core/services/bing.service.ts",
+        "./src/ts/main.ts",
         "./src/ts/utils/constants/regions.ts",
         "./src/ts/utils/types/enumerations.ts",
         "./src/ts/utils/types/interfaces.ts"

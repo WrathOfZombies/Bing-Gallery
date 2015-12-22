@@ -17,42 +17,7 @@
 
 <body class="ms-font-l">
     <div ui-view></div>
-
-    <script type="text/javascript" src="/www/lib/js/system.js"></script>
-    <script>
-        System.config({
-            transpiler: 'none',
-            packages: {
-                'www/js': {
-                    format: 'register',
-                    defaultExtension: 'js'
-                }
-            }
-        });
-        System.import('www/js/bootstrapper.js')
-            .then(null, console.error.bind(console));
-    </script>
-
-    <!-- JS Libraries -->
-    <!--<script type="text/javascript" src="/www/lib/js/jquery.js"></script>
-    <script type="text/javascript" src="/www/lib/js/angular.js"></script>
-    <script type="text/javascript" src="/www/lib/js/angular-aria.js"></script>
-    <script type="text/javascript" src="/www/lib/js/angular-animate.js"></script>
-    <script type="text/javascript" src="/www/lib/js/angular-material.js"></script>
-    <script type="text/javascript" src="/www/lib/js/angular-ui-router.js"></script>
-    <script type="text/javascript" src="/www/lib/js/underscore.js"></script>-->
-    <!-- JS Application -->
-    <!--<script type="text/javascript" src="/www/js/utils/types/enumerations.js"></script>
-    <script type="text/javascript" src="/www/js/utils/types/interfaces.js"></script>
-    <script type="text/javascript" src="/www/js/utils/constants/regions.js"></script>
-
-    <script type="text/javascript" src="/www/js/core/models/bing.image.js"></script>
-    <script type="text/javascript" src="/www/js/core/services/bing.service.js"></script>
-
-    <script type="text/javascript" src="/www/js/core/controllers/home.controller.js"></script>
-
-    <script type="text/javascript" src="/www/js/app.js"></script>
-    <script type="text/javascript" src="/www/js/bootstrapper.js"></script>-->
+    <script data-main="/www/js/main.js" type="text/javascript" src="/www/lib/js/require.js"></script>
 </body>
 
 </html>
