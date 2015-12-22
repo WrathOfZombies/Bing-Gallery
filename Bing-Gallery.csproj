@@ -24,24 +24,33 @@
   <ItemGroup>
     <Content Include=".gitignore" />
     <Content Include="gulpfile.js" />
-    <Content Include="src\html\index.html" />
-    <Content Include="src\html\templates\partials\shared\header.html" />
-    <Content Include="src\html\templates\views\home.html" />
+    <Content Include="app\partials\header.html" />
+    <Content Include="app\home\home.html" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="bower.json" />
     <Content Include="gulpfile.config.json" />
     <Content Include="LICENSE" />
     <Content Include="package.json" />
-    <Content Include="src\scss\page.scss" />
+    <Content Include="app\home\home.scss" />
     <Content Include="tsd.json" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="src\**\*.ts" />
-    <None Include="public\www\**\*.*" />
+    <None Include="src\ts\app.ts" />
+    <None Include="src\ts\bootstrapper.ts" />
+    <None Include="src\ts\core\controllers\home.controller.ts" />
+    <None Include="src\ts\core\models\bing.image.ts" />
+    <None Include="src\ts\core\services\bing.service.ts" />
+    <None Include="src\ts\main.ts" />
+    <None Include="src\ts\utils\constants\regions.ts" />
+    <None Include="src\ts\utils\types\enumerations.ts" />
+    <None Include="src\ts\utils\types\interfaces.ts" />
+    <None Include="www\cache\data.xml" />
     <Content Include="tsconfig.json" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="app\components\" />
+  </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">12.0</VisualStudioVersion>
   </PropertyGroup>

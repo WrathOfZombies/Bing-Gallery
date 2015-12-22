@@ -3,11 +3,11 @@
 import $ = require('jquery');
 import angular = require('angular');
 import ui = require('angular-ui-router');
-import {HomeController} from './core/controllers/home.controller';
-import {BingImageService} from './core/services/bing.service';
+import {HomeController} from './home/home.controller';
+import {BingImageService} from './services/bing.service';
 
-function resolvePath(path: string): string {
-    return '/www/templates/' + path + '.html';
+function getViewTemplate(view: string): string {
+    return 'app/' + view + '/' +  view + '.html';
 }
 
 export class App {
@@ -30,7 +30,7 @@ export class App {
         $locationProvider: ng.ILocationProvider
     ) {
         $stateProvider.state('home', {
-            templateUrl: resolvePath('views/home'),
+            templateUrl: getViewTemplate('home'),
             controller: 'HomeController',
             controllerAs: 'home'
         });

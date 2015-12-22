@@ -1,6 +1,6 @@
 'use strict';
 
-import {IEnumDictionary} from '../types/interfaces';
+import {IEnumDictionary} from './interfaces';
 
 export let REGIONS: IEnumDictionary = {
     0: 'ar-XA',

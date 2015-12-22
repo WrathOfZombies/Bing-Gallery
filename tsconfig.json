@@ -8,9 +8,9 @@
         "moduleResolution": "node",
         "noEmitOnError": true,
         "noImplicitAny": false,
-        "outDir": "./public/www/js",
+        "outDir": "./www/app",
         "removeComments": false,
-        "rootDir": "./src/ts",
+        "rootDir": "./app",
         "target": "es5"
     },
     "exclude": [
@@ -19,18 +19,18 @@
     ],
     "files": [
         "./typings/tsd.d.ts",
-        "./src/ts/app.ts",
-        "./src/ts/bootstrapper.ts",
-        "./src/ts/core/controllers/home.controller.ts",
-        "./src/ts/core/models/bing.image.ts",
-        "./src/ts/core/services/bing.service.ts",
-        "./src/ts/main.ts",
-        "./src/ts/utils/constants/regions.ts",
-        "./src/ts/utils/types/enumerations.ts",
-        "./src/ts/utils/types/interfaces.ts"
+        "./app/app.ts",
+        "./app/bootstrapper.ts",
+        "./app/core/constants.ts",
+        "./app/core/enumerations.ts",
+        "./app/core/interfaces.ts",
+        "./app/home/home.controller.ts",
+        "./app/main.ts",
+        "./app/services/bing.image.ts",
+        "./app/services/bing.service.ts"
     ],
     "filesGlob": [
-        "./src/**/*.ts",
+        "./app/**/*.ts",
         "./typings/tsd.d.ts"
     ],
     "version": "1.8"

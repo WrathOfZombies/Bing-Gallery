@@ -1,8 +1,8 @@
 ﻿'use strict';
 
 import {BingImageService} from '../services/bing.service';
-import {ImageManager} from '../models/bing.image';
-import {IBingImage} from '../../utils/types/interfaces';
+import {ImageManager} from '../services/bing.image';
+import {IBingImage} from '../core/interfaces';
 
 export class HomeController {
     tiles: Array<any> = [];

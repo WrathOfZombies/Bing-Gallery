@@ -1,6 +1,6 @@
 'use strict';
 
-import {IBingImageResult, IBingImage} from '../../utils/types/interfaces';
+import {IBingImageResult, IBingImage} from '../core/interfaces';
 
 export class ImageManager {
     private images: IBingImageResult;

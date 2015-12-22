@@ -1,8 +1,8 @@
 'use strict';
 
-import {Regions} from '../../utils/types/enumerations';
-import {REGIONS} from '../../utils/constants/regions';
-import {ImageManager} from '../models/bing.image';
+import {Regions} from '../core/enumerations';
+import {REGIONS} from '../core/constants';
+import {ImageManager} from './bing.image';
 
 export class BingImageService {
     private url: string = 'https://www.bing.com/HPImageArchive.aspx?format=xml&n={count}&idx={page}&mkt={region}';
@@ -26,7 +26,7 @@ export class BingImageService {
         formattedUrl = formattedUrl.replace('{page}', page.toString());
         formattedUrl = formattedUrl.replace('{region}', REGIONS[region]);
 
-        if (false) formattedUrl = '/www/cache/data.xml';
+        if (true) formattedUrl = 'app/services/data.xml';
 
         let xhr = this.$http.get(formattedUrl);
         return xhr.then(this.retrieveImageArray);

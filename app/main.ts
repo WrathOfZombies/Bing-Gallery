@@ -1,7 +1,7 @@
 'use strict';
 
 var config: RequireConfig = {
-    baseUrl: '/www/lib/js',
+    baseUrl: '/lib',
     shim: {
         'jquery': {
             exports: '$'
@@ -30,13 +30,23 @@ var config: RequireConfig = {
         }
     },
     paths: {
-        app: '../../js'
+        app: '/app'
     }
 };
 
 requirejs.config(config);
 
-requirejs(['jquery', 'app/bootstrapper', 'angular', 'underscore', 'angular-ui-router', 'angular-animate', 'angular-aria', 'angular-material', 'angular-messages'], ($, main) => {
+requirejs([
+    'jquery',
+    'app/bootstrapper',
+    'angular',
+    'underscore',
+    'angular-ui-router',
+    'angular-animate',
+    'angular-aria',
+    'angular-material',
+    'angular-messages'
+], ($, main) => {
     $(document).ready(() => {
         main.BootStrap.bootstrap();
     });

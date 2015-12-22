@@ -51,16 +51,10 @@ $RECYCLE.BIN/
 # Ignore the following folders
 node_modules/**
 bower_components/**
-public/**/*.css
-public/**/*.js
-public/**/*.js.map
-public/**/*.html
-public/platforms
-public/plugins
-public/bld/
+www/**
 typings/**
 .vscode/**
-obj/
-bld/
-bin/
+obj/**
+bld/**
+bin/**
 .vs/
