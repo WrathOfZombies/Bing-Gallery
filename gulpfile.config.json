@@ -1,27 +1,16 @@
 {
   "lib": {
-    "js": "./public/www/lib/js",
-    "css": "./public/www/lib/css",
-    "fonts": "./public/www/lib/fonts"
+      "source": "bower_components",
+      "dest":"www\\lib"
   },
-  "sass": {
-    "input": "./src/scss/**/*.scss",
-    "output": "./public/www/css"
-  },
-  "ts": {
-    "references": "./_references.d.ts",
-    "input": "./src/ts/**/*.ts",
-    "output": "./public/www/js"
-  },
-  "html": {
-    "base": "./src/html/",
-    "input": "./src/html/**/*.html",
-    "output": "./public/www"
+  "app": {
+      "source": "src",
+      "dest": "www"
   },
   "server": {
-    "root": "./public",
+    "root": "www\\",
     "host": "localhost",
     "port": 8080,
-    "fallback": "./public/www/index.html"
+    "fallback": "www\\index.html"
   }
 }

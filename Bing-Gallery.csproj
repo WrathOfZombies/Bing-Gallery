@@ -24,24 +24,87 @@
   <ItemGroup>
     <Content Include=".gitignore" />
     <Content Include="gulpfile.js" />
-    <Content Include="src\html\index.html" />
-    <Content Include="src\html\templates\partials\shared\header.html" />
-    <Content Include="src\html\templates\views\home.html" />
+    <Content Include="src\index.html" />
+    <Content Include="www\index.html" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="bower.json" />
     <Content Include="gulpfile.config.json" />
     <Content Include="LICENSE" />
     <Content Include="package.json" />
-    <Content Include="src\scss\page.scss" />
     <Content Include="tsd.json" />
+    <None Include="src/app\app.ts" />
+    <None Include="src/app\bootstrapper.ts" />
+    <None Include="src/app\core\constants.ts" />
+    <None Include="src/app\core\enumerations.ts" />
+    <None Include="src/app\core\interfaces.ts" />
+    <None Include="src/app\home\home.controller.ts" />
+    <None Include="src/app\home\home.html" />
+    <None Include="src/app\home\home.scss" />
+    <None Include="src/app\main.ts" />
+    <None Include="src/app\partials\header.html" />
+    <None Include="src/app\services\bing.image.ts" />
+    <None Include="src/app\services\bing.service.ts" />
+    <None Include="src/app\services\data.xml" />
+    <None Include="www/app\app.js" />
+    <None Include="www/app\bootstrapper.js" />
+    <None Include="www/app\core\constants.js" />
+    <None Include="www/app\core\enumerations.js" />
+    <None Include="www/app\core\interfaces.js" />
+    <None Include="www/app\home\home.controller.js" />
+    <None Include="www/app\home\home.css" />
+    <None Include="www/app\home\home.html" />
+    <None Include="www/app\main.js" />
+    <None Include="www/app\partials\header.html" />
+    <None Include="www/app\services\bing.image.js" />
+    <None Include="www/app\services\bing.service.js" />
+    <None Include="www/app\services\data.xml" />
+    <None Include="www/lib\angular-animate.js" />
+    <None Include="www/lib\angular-aria.js" />
+    <None Include="www/lib\angular-material.css" />
+    <None Include="www/lib\angular-material.js" />
+    <None Include="www/lib\angular-messages.js" />
+    <None Include="www/lib\angular-ui-router.js" />
+    <None Include="www/lib\angular.js" />
+    <None Include="www/lib\jquery.js" />
+    <None Include="www/lib\require.js" />
+    <None Include="www/lib\underscore.js" />
+    <None Include="typings/angular-material\angular-material.d.ts" />
+    <None Include="typings/angular-ui-router\angular-ui-router.d.ts" />
+    <None Include="typings/angularjs\angular-animate.d.ts" />
+    <None Include="typings/angularjs\angular.d.ts" />
+    <None Include="typings/cordova\cordova.d.ts" />
+    <None Include="typings/cordova\plugins\BatteryStatus.d.ts" />
+    <None Include="typings/cordova\plugins\Camera.d.ts" />
+    <None Include="typings/cordova\plugins\Contacts.d.ts" />
+    <None Include="typings/cordova\plugins\Device.d.ts" />
+    <None Include="typings/cordova\plugins\DeviceMotion.d.ts" />
+    <None Include="typings/cordova\plugins\DeviceOrientation.d.ts" />
+    <None Include="typings/cordova\plugins\Dialogs.d.ts" />
+    <None Include="typings/cordova\plugins\FileSystem.d.ts" />
+    <None Include="typings/cordova\plugins\FileTransfer.d.ts" />
+    <None Include="typings/cordova\plugins\Globalization.d.ts" />
+    <None Include="typings/cordova\plugins\InAppBrowser.d.ts" />
+    <None Include="typings/cordova\plugins\Keyboard.d.ts" />
+    <None Include="typings/cordova\plugins\Media.d.ts" />
+    <None Include="typings/cordova\plugins\MediaCapture.d.ts" />
+    <None Include="typings/cordova\plugins\NetworkInformation.d.ts" />
+    <None Include="typings/cordova\plugins\Push.d.ts" />
+    <None Include="typings/cordova\plugins\Splashscreen.d.ts" />
+    <None Include="typings/cordova\plugins\StatusBar.d.ts" />
+    <None Include="typings/cordova\plugins\Vibration.d.ts" />
+    <None Include="typings/cordova\plugins\WebSQL.d.ts" />
+    <None Include="typings/jquery\jquery.d.ts" />
+    <None Include="typings/requirejs\require.d.ts" />
+    <None Include="typings/tsd.d.ts" />
+    <None Include="typings/underscore\underscore.d.ts" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="src\**\*.ts" />
-    <None Include="public\www\**\*.*" />
     <Content Include="tsconfig.json" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <TypeScriptCompile Include="typings\tsd.d.ts" />
+  </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">12.0</VisualStudioVersion>
   </PropertyGroup>
