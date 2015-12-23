@@ -1,0 +1,37 @@
+{
+    "compileOnSave": false,
+    "compilerOptions": {
+        "declaration": false,
+        "emitDecoratorMetadata": true,
+        "experimentalDecorators": true,
+        "module": "amd",
+        "moduleResolution": "node",
+        "noEmitOnError": true,
+        "noImplicitAny": false,
+        "outDir": "./www",
+        "removeComments": false,
+        "rootDir": "./src",
+        "target": "es5"
+    },
+    "exclude": [
+        "node_modules",
+        "bower_components"
+    ],
+    "files": [
+        "./typings/tsd.d.ts",
+        "./src/app/app.ts",
+        "./src/app/bootstrapper.ts",
+        "./src/app/core/constants.ts",
+        "./src/app/core/enumerations.ts",
+        "./src/app/core/interfaces.ts",
+        "./src/app/home/home.controller.ts",
+        "./src/app/main.ts",
+        "./src/app/services/bing.image.ts",
+        "./src/app/services/bing.service.ts"
+    ],
+    "filesGlob": [
+        "./src/**/*.ts",
+        "./typings/tsd.d.ts"
+    ],
+    "version": "1.8"
+}

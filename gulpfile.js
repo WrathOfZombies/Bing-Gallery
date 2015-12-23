@@ -4,13 +4,14 @@ var gulp = require('gulp'),
     plumber = require('gulp-plumber'),
     bower = require('gulp-bower'),
     mainBowerFiles = require('main-bower-files'),
+    filter = require('gulp-filter'),
     del = require('del'),
 
     sass = require('gulp-sass'),
 
-    inject = require('gulp-inject'),
-    tsc = require('gulp-tsc'),
+    typescript = require('gulp-typescript'),
     sourcemaps = require('gulp-sourcemaps'),
+    tsConfigGlob = require('tsconfig-glob'),
     merge = require('merge2'),
 
     connect = require('gulp-connect'),
@@ -20,69 +21,76 @@ var gulp = require('gulp'),
         this.emit('end');
     };
 
-gulp.task('clean:bower', function (done) {
-    return del(['./bower_components', './lib'], done);
+var tsProject = typescript.createProject('./tsconfig.json', { sortdest: true });
+
+gulp.task('clean', function (done) {
+    return del([config.lib.source, config.lib.dest, config.app.dest], done);
 });
 
-gulp.task('clean:sass', function (done) {
-    return del(config.sass.output, done);
-});
-
-gulp.task('clean:ts', function (done) {
-    return del(config.ts.output, done);
-});
-
-gulp.task('bower:download', ['clean:bower'], function () {
+gulp.task('bower:download', ['clean'], function () {
     return bower();
 });
 
 gulp.task('bower:install', ['bower:download'], function () {
-    var filterCss = gulp.src(mainBowerFiles({ filter: /.*\.css$/i }))
-        .pipe(gulp.dest(config.lib.css)),
+    function relocateFile(filePath) {
+        var regex = new RegExp('^(.*)\\\\' + config.lib.source + '\\\\(.*?)\\\\(?:.*\\\\|)(.*).*$', 'i');
+        var matches = filePath.match(regex);
+        if (matches) {
+            return matches[1] + '\\' + config.lib.dest + '\\' + matches[2];
+        }
+        else {
+            console.error('Found a package, but couldn\'t get the name. Are the libraries in bower_components? Edit the gulp task otherwise with the updated path');
+        }
+    }
 
-        filterJs = gulp.src(mainBowerFiles({ filter: /.*\.js$/i }))
-            .pipe(gulp.dest(config.lib.js)),
+    gulp.src(mainBowerFiles({ base: config.lib.source }))
+        .pipe(gulp.dest(config.lib.dest));
 
-        filterFonts = gulp.src(mainBowerFiles({ filter: /.*\.ttf$/i }))
-            .pipe(gulp.dest(config.lib.fonts));
+    // files.forEach(function (file) {
+    //     console.log(relocateFile(file));
+    //     gulp.src(file)
+    //         .pipe(plumber(errorHandler))
+    //         .pipe(gulp.dest(relocateFile(file)));
+    // });
 
-    return merge([filterCss, filterJs, filterFonts]);
+    return;
 });
 
-gulp.task('compile:sass', ['clean:sass'], function () {
-    return gulp.src(config.sass.input)
+gulp.task('compile:sass', function () {
+    return gulp.src(config.app.source + "/**/*.scss")
         .pipe(plumber(errorHandler))
         .pipe(sass())
-        .pipe(gulp.dest(config.sass.output))
+        .pipe(gulp.dest(config.app.dest))
         .pipe(connect.reload());
 });
 
-gulp.task('generate-references', ['clean:ts'], function () {
-    var target = gulp.src(config.ts.references);
-    var sources = gulp.src([config.ts.input], { read: false });
-    return target
-        .pipe(plumber(errorHandler))
-        .pipe(inject(sources, {
-            starttag: '//{',
-            endtag: '//}',
-            addRootSlash: false,
-            transform: function (filepath) {
-                return '/// <reference path="' + filepath + '" />';
-            }
-        }))
-        .pipe(gulp.dest('./'));
+gulp.task('generate-references', function () {
+    return tsConfigGlob();
 });
 
 gulp.task('compile:ts', ['generate-references'], function () {
-    return gulp.src(config.ts.input)
-        .pipe(plumber(errorHandler))
+    var tsResult = tsProject.src()
         .pipe(sourcemaps.init())
-        .pipe(tsc())
-        .pipe(gulp.dest(config.ts.output))
+        .pipe(plumber(errorHandler))
+        .pipe(typescript(tsProject));
+
+    tsResult.js
+        .pipe(sourcemaps.write())
+        .pipe(gulp.dest(config.app.dest))
         .pipe(connect.reload());
 });
 
-gulp.task('serve', ['compile:sass', 'compile:ts'], function () {
+gulp.task('copy', function () {
+    gulp.src([
+        "!" + config.app.source + "/**/*.scss",
+        "!" + config.app.source + "/**/*.ts",
+        config.app.source + "/**/*.*"
+    ], { base: config.app.source })
+        .pipe(plumber(errorHandler))
+        .pipe(gulp.dest(config.app.dest));
+});
+
+gulp.task('serve', ['compile:sass', 'compile:ts', 'copy'], function () {
     connect.server({
         root: config.server.root,
         host: config.server.host,
@@ -92,16 +100,24 @@ gulp.task('serve', ['compile:sass', 'compile:ts'], function () {
     });
 });
 
-gulp.task('server:reload', function () {
-    gulp.src(config.html.input)
+gulp.task('server:reload', ['copy'], function () {
+    gulp.src([
+        "!" + config.app.source + "/**/*.scss",
+        "!" + config.app.source + "/**/*.ts",
+        config.app.source + "/**/*.*"
+    ])
         .pipe(connect.reload())
         .pipe(plumber(errorHandler));
 });
 
 gulp.task('watch', function () {
-    gulp.watch(config.sass.input, ['compile:sass']);
-    gulp.watch(config.ts.input, ['compile:ts']);
-    gulp.watch(config.html.input, ['server:reload']);
+    gulp.watch(config.app.source + "/**/*.scss", ['compile:sass']);
+    gulp.watch(config.app.source + "/**/*.ts", ['compile:ts']);
+    gulp.watch([
+        "!" + config.app.source + "/**/*.scss",
+        "!" + config.app.source + "/**/*.ts",
+        config.app.source + "/**/*.*"
+    ], ['server:reload']);
 });
 
-gulp.task('build', ['serve', 'watch']);
+gulp.task('default', ['serve', 'watch']);
