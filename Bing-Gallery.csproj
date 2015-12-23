@@ -46,7 +46,6 @@
     <None Include="src/app\services\bing.image.ts" />
     <None Include="src/app\services\bing.service.ts" />
     <None Include="src/app\services\data.xml" />
-    <None Include="src/index.html" />
     <None Include="www/app\app.js" />
     <None Include="www/app\bootstrapper.js" />
     <None Include="www/app\core\constants.js" />
