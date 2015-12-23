@@ -24,32 +24,43 @@
   <ItemGroup>
     <Content Include=".gitignore" />
     <Content Include="gulpfile.js" />
-    <Content Include="app\partials\header.html" />
-    <Content Include="app\home\home.html" />
+    <Content Include="www\index.html" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="bower.json" />
     <Content Include="gulpfile.config.json" />
     <Content Include="LICENSE" />
     <Content Include="package.json" />
-    <Content Include="app\home\home.scss" />
     <Content Include="tsd.json" />
+    <None Include="src/**/*.*" />
+    <None Include="www/app\app.js" />
+    <None Include="www/app\bootstrapper.js" />
+    <None Include="www/app\core\constants.js" />
+    <None Include="www/app\core\enumerations.js" />
+    <None Include="www/app\core\interfaces.js" />
+    <None Include="www/app\home\home.controller.js" />
+    <None Include="www/app\home\home.css" />
+    <None Include="www/app\home\home.html" />
+    <None Include="www/app\main.js" />
+    <None Include="www/app\partials\header.html" />
+    <None Include="www/app\services\bing.image.js" />
+    <None Include="www/app\services\bing.service.js" />
+    <None Include="www/app\services\data.xml" />
+    <None Include="www/index.html" />
+    <None Include="www/lib\angular-animate.js" />
+    <None Include="www/lib\angular-aria.js" />
+    <None Include="www/lib\angular-material.css" />
+    <None Include="www/lib\angular-material.js" />
+    <None Include="www/lib\angular-messages.js" />
+    <None Include="www/lib\angular-ui-router.js" />
+    <None Include="www/lib\angular.js" />
+    <None Include="www/lib\jquery.js" />
+    <None Include="www/lib\require.js" />
+    <None Include="www/lib\underscore.js" />
+    <None Include="typings/**/*.*" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="src\ts\app.ts" />
-    <None Include="src\ts\bootstrapper.ts" />
-    <None Include="src\ts\core\controllers\home.controller.ts" />
-    <None Include="src\ts\core\models\bing.image.ts" />
-    <None Include="src\ts\core\services\bing.service.ts" />
-    <None Include="src\ts\main.ts" />
-    <None Include="src\ts\utils\constants\regions.ts" />
-    <None Include="src\ts\utils\types\enumerations.ts" />
-    <None Include="src\ts\utils\types\interfaces.ts" />
-    <None Include="www\cache\data.xml" />
     <Content Include="tsconfig.json" />
-  </ItemGroup>
-  <ItemGroup>
-    <Folder Include="app\components\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">12.0</VisualStudioVersion>

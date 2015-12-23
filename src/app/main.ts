@@ -1,7 +1,7 @@
 'use strict';
 
 var config: RequireConfig = {
-    baseUrl: '/lib',
+    baseUrl: '/www/lib',
     shim: {
         'jquery': {
             exports: '$'
@@ -30,7 +30,7 @@ var config: RequireConfig = {
         }
     },
     paths: {
-        app: '/app'
+        app: '/www/app'
     }
 };
 

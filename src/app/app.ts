@@ -7,7 +7,7 @@ import {HomeController} from './home/home.controller';
 import {BingImageService} from './services/bing.service';
 
 function getViewTemplate(view: string): string {
-    return 'app/' + view + '/' +  view + '.html';
+    return '/www/app/' + view + '/' +  view + '.html';
 }
 
 export class App {

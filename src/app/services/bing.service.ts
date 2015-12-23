@@ -26,7 +26,7 @@ export class BingImageService {
         formattedUrl = formattedUrl.replace('{page}', page.toString());
         formattedUrl = formattedUrl.replace('{region}', REGIONS[region]);
 
-        if (true) formattedUrl = 'app/services/data.xml';
+        if (true) formattedUrl = '/www/app/services/data.xml';
 
         let xhr = this.$http.get(formattedUrl);
         return xhr.then(this.retrieveImageArray);
