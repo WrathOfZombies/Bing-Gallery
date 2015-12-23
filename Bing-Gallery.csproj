@@ -69,10 +69,41 @@
     <None Include="www/lib\jquery.js" />
     <None Include="www/lib\require.js" />
     <None Include="www/lib\underscore.js" />
-    <None Include="typings/**/*.*" />
+    <None Include="typings/angular-material\angular-material.d.ts" />
+    <None Include="typings/angular-ui-router\angular-ui-router.d.ts" />
+    <None Include="typings/angularjs\angular-animate.d.ts" />
+    <None Include="typings/angularjs\angular.d.ts" />
+    <None Include="typings/cordova\cordova.d.ts" />
+    <None Include="typings/cordova\plugins\BatteryStatus.d.ts" />
+    <None Include="typings/cordova\plugins\Camera.d.ts" />
+    <None Include="typings/cordova\plugins\Contacts.d.ts" />
+    <None Include="typings/cordova\plugins\Device.d.ts" />
+    <None Include="typings/cordova\plugins\DeviceMotion.d.ts" />
+    <None Include="typings/cordova\plugins\DeviceOrientation.d.ts" />
+    <None Include="typings/cordova\plugins\Dialogs.d.ts" />
+    <None Include="typings/cordova\plugins\FileSystem.d.ts" />
+    <None Include="typings/cordova\plugins\FileTransfer.d.ts" />
+    <None Include="typings/cordova\plugins\Globalization.d.ts" />
+    <None Include="typings/cordova\plugins\InAppBrowser.d.ts" />
+    <None Include="typings/cordova\plugins\Keyboard.d.ts" />
+    <None Include="typings/cordova\plugins\Media.d.ts" />
+    <None Include="typings/cordova\plugins\MediaCapture.d.ts" />
+    <None Include="typings/cordova\plugins\NetworkInformation.d.ts" />
+    <None Include="typings/cordova\plugins\Push.d.ts" />
+    <None Include="typings/cordova\plugins\Splashscreen.d.ts" />
+    <None Include="typings/cordova\plugins\StatusBar.d.ts" />
+    <None Include="typings/cordova\plugins\Vibration.d.ts" />
+    <None Include="typings/cordova\plugins\WebSQL.d.ts" />
+    <None Include="typings/jquery\jquery.d.ts" />
+    <None Include="typings/requirejs\require.d.ts" />
+    <None Include="typings/tsd.d.ts" />
+    <None Include="typings/underscore\underscore.d.ts" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="tsconfig.json" />
+  </ItemGroup>
+  <ItemGroup>
+    <TypeScriptCompile Include="typings\tsd.d.ts" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">12.0</VisualStudioVersion>
