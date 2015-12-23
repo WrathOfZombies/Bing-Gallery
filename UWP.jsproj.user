@@ -3,5 +3,6 @@
   <PropertyGroup>
     <ReferenceCachePath>C:\Users\bhkrish\AppData\Local\Temp\jd3zyiiw_UWP_refcache</ReferenceCachePath>
     <ShowAllFiles>false</ShowAllFiles>
+    <AutoRefresh>false</AutoRefresh>
   </PropertyGroup>
 </Project>

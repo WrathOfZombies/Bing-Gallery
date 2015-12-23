@@ -52,6 +52,7 @@ $RECYCLE.BIN/
 node_modules/**
 bower_components/**
 www/**
+platforms/**
 typings/**
 .vscode/**
 obj/**

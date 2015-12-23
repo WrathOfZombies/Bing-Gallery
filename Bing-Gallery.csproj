@@ -24,6 +24,7 @@
   <ItemGroup>
     <Content Include=".gitignore" />
     <Content Include="gulpfile.js" />
+    <Content Include="src\index.html" />
     <Content Include="www\index.html" />
   </ItemGroup>
   <ItemGroup>
@@ -32,7 +33,20 @@
     <Content Include="LICENSE" />
     <Content Include="package.json" />
     <Content Include="tsd.json" />
-    <None Include="src/**/*.*" />
+    <None Include="src/app\app.ts" />
+    <None Include="src/app\bootstrapper.ts" />
+    <None Include="src/app\core\constants.ts" />
+    <None Include="src/app\core\enumerations.ts" />
+    <None Include="src/app\core\interfaces.ts" />
+    <None Include="src/app\home\home.controller.ts" />
+    <None Include="src/app\home\home.html" />
+    <None Include="src/app\home\home.scss" />
+    <None Include="src/app\main.ts" />
+    <None Include="src/app\partials\header.html" />
+    <None Include="src/app\services\bing.image.ts" />
+    <None Include="src/app\services\bing.service.ts" />
+    <None Include="src/app\services\data.xml" />
+    <None Include="src/index.html" />
     <None Include="www/app\app.js" />
     <None Include="www/app\bootstrapper.js" />
     <None Include="www/app\core\constants.js" />
@@ -46,7 +60,6 @@
     <None Include="www/app\services\bing.image.js" />
     <None Include="www/app\services\bing.service.js" />
     <None Include="www/app\services\data.xml" />
-    <None Include="www/index.html" />
     <None Include="www/lib\angular-animate.js" />
     <None Include="www/lib\angular-aria.js" />
     <None Include="www/lib\angular-material.css" />

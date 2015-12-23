@@ -7,7 +7,7 @@ import {HomeController} from './home/home.controller';
 import {BingImageService} from './services/bing.service';
 
 function getViewTemplate(view: string): string {
-    return '/www/app/' + view + '/' +  view + '.html';
+    return 'app/' + view + '/' +  view + '.html';
 }
 
 export class App {
@@ -34,8 +34,6 @@ export class App {
             controller: 'HomeController',
             controllerAs: 'home'
         });
-
-        $locationProvider.html5Mode(true).hashPrefix('!');
     }
 
     private configureComponents() {
