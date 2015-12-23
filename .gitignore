@@ -54,7 +54,6 @@ bower_components/**
 www/**
 platforms/**
 typings/**
-.vscode/**
 obj/**
 bld/**
 bin/**
