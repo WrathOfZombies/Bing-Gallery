@@ -2,14 +2,14 @@
 
 import {Regions} from '../core/enumerations';
 import {REGIONS} from '../core/constants';
-import {ImageManager} from './bing.image';
+import {IBingImage} from '../core/interfaces';
 
 export class BingImageService {
-    private url: string = 'https://www.bing.com/HPImageArchive.aspx?format=xml&n={count}&idx={page}&mkt={region}';
+    private url: string = 'https://www.bing.com/HPImageArchive.aspx?format=js&n={count}&idx={page}&mkt={region}';
 
-    private retrieveImageArray(response: ng.IHttpPromiseCallbackArg<any>): ImageManager {
+    private retrieveImageArray(response: ng.IHttpPromiseCallbackArg<any>): Array<IBingImage> {
         if (!(response && response.data)) return null;
-        return new ImageManager(response.data);
+        return response.data.images;
     }
 
     constructor(private $http: ng.IHttpService) { }
@@ -26,7 +26,7 @@ export class BingImageService {
         formattedUrl = formattedUrl.replace('{page}', page.toString());
         formattedUrl = formattedUrl.replace('{region}', REGIONS[region]);
 
-        if (true) formattedUrl = 'app/services/data.xml';
+        if (true) formattedUrl = 'app/services/data.json';
 
         let xhr = this.$http.get(formattedUrl);
         return xhr.then(this.retrieveImageArray);

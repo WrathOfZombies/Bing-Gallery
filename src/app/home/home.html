@@ -21,16 +21,15 @@
 </div>
 
 <div flex ng-cloak class="gridListdemoBasicUsage">
-    <md-grid-list md-cols-gt-md="8" md-cols-sm="3" md-cols-md="4" md-cols-xs="1"
-                  md-row-height-gt-md="1:1" md-row-height="4:3"
+    <md-grid-list md-cols-gt-md="8" md-cols-md="6" md-cols-sm="4" md-cols-xs="2"
+                  md-row-height="1:1"
                   md-gutter="10px">
-        <md-grid-tile ng-repeat="tile in home.tiles"
+        <md-grid-tile ng-repeat="image in home.images"
                       md-rowspan="2"
-                      md-colspan="2"
-                      md-colspan-xs="1"
-                      back-image="{{ 'https://www.bing.com' + tile.url }}"
-                      ng-click="home.setBackground(tile)">
-            <md-grid-tile-footer><h3>{{tile.copyright}}</h3></md-grid-tile-footer>
+                      md-colspan="2"                      
+                      back-image="{{ 'https://www.bing.com' + image.url }}"
+                      ng-click="home.setBackground(image)">
+            <md-grid-tile-footer><h3>{{image.copyright}}</h3></md-grid-tile-footer>
         </md-grid-tile>
     </md-grid-list>
 </div>

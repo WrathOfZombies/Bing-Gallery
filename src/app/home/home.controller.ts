@@ -1,32 +1,28 @@
 ﻿'use strict';
 
 import {BingImageService} from '../services/bing.service';
-import {ImageManager} from '../services/bing.image';
 import {IBingImage} from '../core/interfaces';
 
 export class HomeController {
-    tiles: Array<any> = [];
+    images: Array<IBingImage> = null;
 
     constructor(private bingImageService: BingImageService) {
-        bingImageService.getImagesFromCalendar(8).then((images) => { this.renderImages(images) });
+        bingImageService.getImagesFromCalendar(8, 20).then((images) => { this.renderImages(images) });
     }
 
-    renderImages(images: ImageManager) {
-        let tiles = images.get();
-
-        if (!this.tiles) {
-            console.log('initializing');
-            this.tiles = tiles;
+    renderImages(images: Array<IBingImage>) {        
+        if (!this.images) {
+            this.images = images;
             return;
         }
 
-        tiles.forEach((tile) => {
-            this.tiles.push(tile);
+        images.forEach((image) => {
+            this.images.push(image);
         });
     }
 
-    setBackground(tile: IBingImage) {
-        var url = 'https://www.bing.com' + tile.urlBase + '_1920x1080.jpg';
+    setBackground(image: IBingImage) {
+        var url = 'https://www.bing.com' + image.urlBase + '_1920x1080.jpg';
 
         if (window.hasOwnProperty('Windows')) {
             let windows = window['Windows'];

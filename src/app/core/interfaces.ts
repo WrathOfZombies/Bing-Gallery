@@ -4,22 +4,20 @@ export interface IEnumDictionary {
     [index: number]: string
 }
 
-export interface IBingImageResult {
-    image: Array<IBingImage>;
-}
-
 export interface IBingImage {
     startDate: Date,
-    endDate: Date,
     fullStartDate: Date,
+    endDate: Date,
     url: string,
     urlBase: string,
     copyright: string,
     copyrightLink: string,
+    wp: boolean,
+    hsh: string,    
     drk: number,
     top: number,
     bot: number,
-    hotspots: Array<IBingImageHotspot>;
+    hs: Array<IBingImageHotspot>;
 }
 
 export interface IBingImageHotspot {

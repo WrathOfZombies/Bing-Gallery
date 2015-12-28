@@ -26,7 +26,6 @@
         "./src/app/core/interfaces.ts",
         "./src/app/home/home.controller.ts",
         "./src/app/main.ts",
-        "./src/app/services/bing.image.ts",
         "./src/app/services/bing.service.ts"
     ],
     "filesGlob": [
