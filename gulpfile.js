@@ -32,28 +32,8 @@ gulp.task('bower:download', ['clean'], function () {
 });
 
 gulp.task('bower:install', ['bower:download'], function () {
-    function relocateFile(filePath) {
-        var regex = new RegExp('^(.*)\\\\' + config.lib.source + '\\\\(.*?)\\\\(?:.*\\\\|)(.*).*$', 'i');
-        var matches = filePath.match(regex);
-        if (matches) {
-            return matches[1] + '\\' + config.lib.dest + '\\' + matches[2];
-        }
-        else {
-            console.error('Found a package, but couldn\'t get the name. Are the libraries in bower_components? Edit the gulp task otherwise with the updated path');
-        }
-    }
-
-    gulp.src(mainBowerFiles({ base: config.lib.source }))
+    return gulp.src(mainBowerFiles({ base: config.lib.source }))
         .pipe(gulp.dest(config.lib.dest));
-
-    // files.forEach(function (file) {
-    //     console.log(relocateFile(file));
-    //     gulp.src(file)
-    //         .pipe(plumber(errorHandler))
-    //         .pipe(gulp.dest(relocateFile(file)));
-    // });
-
-    return;
 });
 
 gulp.task('compile:sass', function () {
