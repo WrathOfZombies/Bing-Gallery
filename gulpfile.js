@@ -55,7 +55,7 @@ gulp.task('compile:ts', ['generate-references'], function () {
         .pipe(typescript(tsProject));
 
     tsResult.js
-        .pipe(sourcemaps.write())
+        .pipe(sourcemaps.write('./'))
         .pipe(gulp.dest(config.app.dest))
         .pipe(connect.reload());
 });

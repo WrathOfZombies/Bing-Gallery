@@ -3,37 +3,23 @@
 import $ = require('jquery');
 import angular = require('angular');
 import ui = require('angular-ui-router');
-import {HomeController} from './home/home.controller';
-import {BingImageService} from './services/bing.service';
+import Utilities = require('./core/utilities');
+import HomeController = require('./home/home.controller');
+import BingImageService = require('./services/bing.service');
+import ImageLoader = require('./components/imageLoader/directive');
 
-function getViewTemplate(view: string): string {
-    return 'app/' + view + '/' +  view + '.html';
-}
-
-export class App {
+class App {
     private registerComponents() {
         this.module.factory('BingImageService', ['$http', ($http: ng.IHttpService) => { return new BingImageService($http); }]);
         this.module.controller('HomeController', ['BingImageService', HomeController]);
-        this.module.directive('backImage', function() {
-            return function(scope, element, attrs) {
-                var url = attrs.backImage;
-                element.css({
-                    'background-image': 'url(' + url + ')',
-                    'background-size': 'cover'
-                });
-            };
-        });
+        this.module.directive('imageLoader', [() => { return new ImageLoader(); }]);
     }
 
     private registerStates(
         $stateProvider: ng.ui.IStateProvider,
         $locationProvider: ng.ILocationProvider
     ) {
-        $stateProvider.state('home', {
-            templateUrl: getViewTemplate('home'),
-            controller: 'HomeController',
-            controllerAs: 'home'
-        });
+        $stateProvider.state(Utilities.getStateDefinition('Home'));
     }
 
     private configureComponents() {
@@ -48,7 +34,9 @@ export class App {
 
     run() {
         this.module.run(['$state', 'BingImageService', ($state: ng.ui.IStateService, BingImageService: BingImageService) => {
-            $state.go('home');
+            $state.go('Home');
         }]);
     }
 }
+
+export = App;

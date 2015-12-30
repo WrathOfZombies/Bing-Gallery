@@ -1,16 +1,11 @@
 ﻿'use strict';
 
-import {BingImageService} from '../services/bing.service';
-import {IBingImage} from '../core/interfaces';
+import Interfaces = require('../core/interfaces');
+import Utilities = require('../core/utilities');
+import BingImageService = require('../services/bing.service');
 
-export class HomeController {
-    images: Array<IBingImage> = null;
-
-    constructor(private bingImageService: BingImageService) {
-        bingImageService.getImagesFromCalendar(8, 20).then((images) => { this.renderImages(images) });
-    }
-
-    renderImages(images: Array<IBingImage>) {        
+class HomeController {
+    private renderImages(images: Array<Interfaces.IBingImage>) {
         if (!this.images) {
             this.images = images;
             return;
@@ -19,17 +14,25 @@ export class HomeController {
         images.forEach((image) => {
             this.images.push(image);
         });
+    }    
+
+    constructor(private bingImageService: BingImageService) {
+        bingImageService.getImagesFromCalendar(8, 15).then((images) => { this.renderImages(images) });
     }
 
-    setBackground(image: IBingImage) {
+    images: Array<Interfaces.IBingImage> = null;    
+
+    setBackground(image: Interfaces.IBingImage) {
         var url = 'https://www.bing.com' + image.urlBase + '_1920x1080.jpg';
 
-        if (window.hasOwnProperty('Windows')) {
+        if (Utilities.isWindows()) {
             let windows = window['Windows'];
             let userPersonalizationSettings = windows.System.UserProfile.UserProfilePersonalizationSettings;
             if (userPersonalizationSettings.isSupported()) {
                 //userPersonalizationSettings.current.trySetWallpaperImageAsync();
             }
-        }
+        }        
     }
 }
+
+export = HomeController;

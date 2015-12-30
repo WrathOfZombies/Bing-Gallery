@@ -1,5 +1,7 @@
 'use strict';
 
+declare var require: Require;
+
 var config: RequireConfig = {
     baseUrl: 'lib',
     shim: {
@@ -34,11 +36,11 @@ var config: RequireConfig = {
     }
 };
 
-requirejs.config(config);
+require.config(config);
 
-requirejs([
+require([
     'jquery',
-    'app/bootstrapper',
+    'app/bootstrap',
     'angular',
     'underscore',
     'angular-ui-router',
@@ -46,8 +48,8 @@ requirejs([
     'angular-aria',
     'angular-material',
     'angular-messages'
-], ($, main) => {
+], ($, BootStrap) => {
     $(document).ready(() => {
-        main.BootStrap.bootstrap();
+        BootStrap.bootstrap();
     });
 });

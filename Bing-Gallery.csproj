@@ -33,10 +33,10 @@
     <Content Include="package.json" />
     <Content Include="tsd.json" />
     <None Include="src/app\app.ts" />
-    <None Include="src/app\bootstrapper.ts" />
-    <None Include="src/app\core\constants.ts" />
-    <None Include="src/app\core\enumerations.ts" />
-    <None Include="src/app\core\interfaces.ts" />
+    <None Include="src\app\bootstrap.ts" />
+    <None Include="src\app\core\constants.ts" />
+    <None Include="src\app\core\enumerations.ts" />
+    <None Include="src\app\core\interfaces.ts" />
     <None Include="src/app\home\home.controller.ts" />
     <None Include="src/app\home\home.html" />
     <None Include="src/app\home\home.scss" />
@@ -47,6 +47,19 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="tsconfig.json" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="src\app\core\cordova\" />
+    <Folder Include="src\app\core\web\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="src\app\components\imageLoader\directive.ts" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="src\app\core\windows\background.loader.ts" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="src\app\core\utilities.ts" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">12.0</VisualStudioVersion>

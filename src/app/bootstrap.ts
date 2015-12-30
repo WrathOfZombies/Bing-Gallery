@@ -1,24 +1,24 @@
 'use strict';
 
-import {App} from './app';
+import Enumerations = require('./core/enumerations');
+import Constants = require('./core/constants');
+import App = require('./app');
 
-export class BootStrap {
-    static context: string;
-
+class BootStrap {
     constructor() {
         let isCordova = document.URL.indexOf('http://') === -1 && document.URL.indexOf('https://') === -1,
             isWindows = window.hasOwnProperty('Windows');
 
         if (isCordova && !isWindows) {
-            BootStrap.context = 'Cordova';
+            Constants.context = Enumerations.ContextTypes.Cordova;
             BootStrap.cordovaLaunch();
         }
         else if (isWindows) {
-            BootStrap.context = 'Windows';
-            BootStrap.bootstrap();
+            Constants.context = Enumerations.ContextTypes.Windows;
+            BootStrap.windowsLaunch();
         }
         else {
-            BootStrap.context = 'Web';
+            Constants.context = Enumerations.ContextTypes.Web;
             BootStrap.bootstrap();
         }
     }
@@ -41,6 +41,10 @@ export class BootStrap {
         document.addEventListener('deviceready', onDeviceReady);
     }
 
+    static windowsLaunch() {
+        BootStrap.bootstrap();
+    }
+
     static bootstrap() {
         let module = angular.module('BingGallery', ['ui.router', 'ngAnimate', 'ngMessages', 'ngAria', 'ngMaterial']);
 
@@ -52,3 +56,5 @@ export class BootStrap {
         });
     }
 }
+
+export = BootStrap;

@@ -20,10 +20,13 @@
     "files": [
         "./typings/tsd.d.ts",
         "./src/app/app.ts",
-        "./src/app/bootstrapper.ts",
+        "./src/app/bootstrap.ts",
+        "./src/app/components/imageLoader/directive.ts",
         "./src/app/core/constants.ts",
         "./src/app/core/enumerations.ts",
         "./src/app/core/interfaces.ts",
+        "./src/app/core/utilities.ts",
+        "./src/app/core/windows/background.loader.ts",
         "./src/app/home/home.controller.ts",
         "./src/app/main.ts",
         "./src/app/services/bing.service.ts"

@@ -27,7 +27,7 @@
         <md-grid-tile ng-repeat="image in home.images"
                       md-rowspan="2"
                       md-colspan="2"                      
-                      back-image="{{ 'https://www.bing.com' + image.url }}"
+                      image-loader="{{ 'https://www.bing.com' + image.url }}"
                       ng-click="home.setBackground(image)">
             <md-grid-tile-footer><h3>{{image.copyright}}</h3></md-grid-tile-footer>
         </md-grid-tile>
