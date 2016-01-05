@@ -49,16 +49,22 @@
     <Content Include="tsconfig.json" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="src\app\core\download.manager.ts" />
+    <Content Include="src\app\core\download.worker.ts" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="src\app\components\imageLoader\directive.ts" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="src\app\core\background.loader.ts" />
+    <Content Include="src\app\windows\windows.image.manager.ts" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="src\app\core\utilities.ts" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="src\app\core\download.manager.ts" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="src\app\cordova\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">12.0</VisualStudioVersion>

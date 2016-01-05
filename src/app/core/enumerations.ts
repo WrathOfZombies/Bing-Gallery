@@ -67,6 +67,17 @@ module Enumerations {
         HongKong,
         Taiwan
     }
+
+    export enum DownloadWorkerStates {
+        NotStarted = -1,
+        Started,
+        NoParametersSupplied,
+        RequestFailed,
+        ResponseInvalid,
+        IndeterminateProgress,
+        DeterminateProgress,
+        Success
+    }
 }
 
 export = Enumerations;

@@ -2,7 +2,7 @@
 
 import Interfaces = require('../core/interfaces');
 import Utilities = require('../core/utilities');
-import BackgroundLoader = require('../core/background.loader');
+import BackgroundLoader = require('../core/download.manager');
 import BingImageService = require('../services/bing.service');
 
 class HomeController {
@@ -24,13 +24,16 @@ class HomeController {
     images: Array<Interfaces.IBingImage> = null;
 
     setBackground(image: Interfaces.IBingImage) {
-        var url = 'https://www.bing.com' + image.urlBase + '_1920x1080.jpg';
+        var url = 'https://www.bing.com' + image.urlbase + '_1920x1080.jpg';
 
-        this.BackgroundLoaderService.downloadImage(url).then((result) => {
-            console.log(result);
-        }, (error) => {
-            console.error(error);
-        });
+        this.BackgroundLoaderService.download(url)
+            .then((result) => {
+                console.log(result);
+            }, (error) => {
+                console.error(error);
+            }, (progress) => {
+                console.log(progress);
+            });
 
         //if (Utilities.isWindows()) {
         //    let windows = window['Windows'];

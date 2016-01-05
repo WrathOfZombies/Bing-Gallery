@@ -22,15 +22,16 @@
         "./src/app/app.ts",
         "./src/app/bootstrap.ts",
         "./src/app/components/imageLoader/directive.ts",
-        "./src/app/core/background.loader.ts",
         "./src/app/core/constants.ts",
         "./src/app/core/download.manager.ts",
+        "./src/app/core/download.worker.ts",
         "./src/app/core/enumerations.ts",
         "./src/app/core/interfaces.ts",
         "./src/app/core/utilities.ts",
         "./src/app/home/home.controller.ts",
         "./src/app/main.ts",
-        "./src/app/services/bing.service.ts"
+        "./src/app/services/bing.service.ts",
+        "./src/app/windows/windows.image.manager.ts"
     ],
     "filesGlob": [
         "./src/**/*.ts",
