@@ -1,3 +1,5 @@
+/// Gulp configuration for Typescript, SASS and Live Reload
+
 'use strict';
 
 var gulp = require('gulp'),

@@ -88,6 +88,9 @@
     },
     "requirejs/require.d.ts": {
       "commit": "40c60850ad6c8175a62d5ab48c4e016ea5b3dffe"
+    },
+    "winrt/winrt-uwp.d.ts": {
+      "commit": "bdaf2f0eb19edee26248c80bab4947e9b70e4217"
     }
   }
 }

@@ -49,14 +49,13 @@
     <Content Include="tsconfig.json" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="src\app\core\cordova\" />
-    <Folder Include="src\app\core\web\" />
+    <Content Include="src\app\core\download.manager.ts" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="src\app\components\imageLoader\directive.ts" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="src\app\core\windows\background.loader.ts" />
+    <Content Include="src\app\core\background.loader.ts" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="src\app\core\utilities.ts" />

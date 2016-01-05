@@ -4,6 +4,10 @@ import Constants = require('./constants');
 import Enumerations = require('./enumerations');
 
 class Utilities {
+    public static get Windows(): typeof Windows {
+        return window["Windows"];
+    }
+
     public static getRegion(region: Enumerations.RegionType): string {
         return Constants.regions[region];
     }
