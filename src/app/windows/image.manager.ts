@@ -31,13 +31,15 @@ class ImageManager implements Interfaces.IImageManager {
 
     saveImage(filename: string, byteArray: Array<number>, temporary: boolean = false): ng.IPromise<string> {
         let deferred = this.$q.defer(),
-            folder = null;
+            folder = null,
+            localFolder = null;
 
         if (temporary) {
             folder = Utilities.Windows.Storage.ApplicationData.current.localCacheFolder;
         }
         else {
             folder = Utilities.Windows.Storage.KnownFolders.picturesLibrary;
+            localFolder = Utilities.Windows.Storage.ApplicationData.current.localFolder;
         }
 
         folder.createFileAsync(filename, Utilities.Windows.Storage.CreationCollisionOption.generateUniqueName)
@@ -45,9 +47,13 @@ class ImageManager implements Interfaces.IImageManager {
                 try {
                     let bytes = Utilities.Windows.Security.Cryptography.CryptographicBuffer.createFromByteArray(byteArray);
                     var data = Utilities.Windows.Security.Cryptography.CryptographicBuffer.encodeToBase64String(bytes);
-
+                    
                     Utilities.Windows.Storage.FileIO.writeBufferAsync(file, bytes)
-                        .then(() => { deferred.resolve(file.name); },
+                        .then(() => {
+                            file.copyAsync(localFolder).
+                                then((success) => { deferred.resolve(file.name); },
+                                (error) => { deferred.reject(error); });
+                        },
                         (error) => { deferred.reject(error); });
                 }
                 catch (exception) { deferred.reject(exception); }
@@ -61,12 +67,13 @@ class ImageManager implements Interfaces.IImageManager {
             userpersonalizationsettings = Utilities.Windows.System.UserProfile.UserProfilePersonalizationSettings;
 
         if (userpersonalizationsettings.isSupported()) {
-            Utilities.Windows.Storage.KnownFolders.picturesLibrary.getFileAsync(filename)
+            Utilities.Windows.Storage.StorageFile.getFileFromApplicationUriAsync(new Utilities.Windows.Foundation.Uri("ms-appdata:///local/" + filename))
                 .then((file) => {
                     userpersonalizationsettings.current.trySetWallpaperImageAsync(file)
                         .then((success) => { deferred.resolve(true); },
                         (error) => { deferred.reject(false); });
                 },
+
                 (error) => {
                     deferred.reject(error);
                 });

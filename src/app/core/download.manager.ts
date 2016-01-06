@@ -32,8 +32,10 @@ class DownloadManager {
                             break;
 
                         case Enumerations.DownloadWorkerStates.Success:
-                            task.deferred.resolve(e.data.response);
+                            task.deferred.resolve(e.data.response);                        
                     }
+
+                    worker.terminate();
                 };
                 task.state = Enumerations.DownloadWorkerStates.Started;
                 this._active.splice(index, 1);
