@@ -4,6 +4,12 @@ import Constants = require('./constants');
 import Enumerations = require('./enumerations');
 
 class Utilities {
+    public static get Context(): string {
+        if (Utilities.isWindows) return 'windows';
+        else if (Utilities.isCordova) return 'cordova';
+        else if (Utilities.isWeb) return 'web';
+    }
+
     public static get Windows(): typeof Windows {
         return window["Windows"];
     }
@@ -12,15 +18,15 @@ class Utilities {
         return Constants.regions[region];
     }
 
-    public static isWindows() {
+    public static get isWindows() {
         return Constants.context === Enumerations.ContextTypes.Windows;
     }
 
-    public static isCordova() {
+    public static get isCordova() {
         return Constants.context === Enumerations.ContextTypes.Cordova;
     }
 
-    public static isWeb() {
+    public static get isWeb() {
         return Constants.context === Enumerations.ContextTypes.Web;
     }
 

@@ -2,6 +2,7 @@
 
 import Interfaces = require('../core/interfaces');
 import Utilities = require('../core/utilities');
+import Enumerations = require('../core/enumerations');
 import BackgroundLoader = require('../core/download.manager');
 import BingImageService = require('../services/bing.service');
 
@@ -17,31 +18,25 @@ class HomeController {
         });
     }
 
-    constructor(private bingImageService: BingImageService, private BackgroundLoaderService: BackgroundLoader) {
-        bingImageService.getImagesFromCalendar(8, 15).then((images) => { this.renderImages(images) });
+    constructor(private BingImageService: BingImageService, private ImageManager: Interfaces.IImageManager) {
+        this.BingImageService.getImagesFromCalendar(8, 15).then((images) => { this.renderImages(images) });
     }
 
     images: Array<Interfaces.IBingImage> = null;
 
     setBackground(image: Interfaces.IBingImage) {
-        var url = 'https://www.bing.com' + image.urlbase + '_1920x1080.jpg';
-
-        this.BackgroundLoaderService.download(url)
+        var url = 'https://www.bing.com' + image.urlbase;
+        this.ImageManager.downloadImage(url, Enumerations.Resolutions.High)
             .then((result) => {
-                console.log(result);
+                return this.ImageManager.setImageAsWallpaper(result);
+            })
+            .then((success) => {
+                console.log(success);
             }, (error) => {
                 console.error(error);
             }, (progress) => {
                 console.log(progress);
             });
-
-        //if (Utilities.isWindows()) {
-        //    let windows = window['Windows'];
-        //    let userPersonalizationSettings = windows.System.UserProfile.UserProfilePersonalizationSettings;
-        //    if (userPersonalizationSettings.isSupported()) {
-        //        //userPersonalizationSettings.current.trySetWallpaperImageAsync();
-        //    }
-        //}        
     }
 }
 

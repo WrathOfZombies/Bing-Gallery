@@ -55,7 +55,7 @@
     <Content Include="src\app\components\imageLoader\directive.ts" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="src\app\windows\windows.image.manager.ts" />
+    <Content Include="src\app\windows\image.manager.ts" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="src\app\core\utilities.ts" />

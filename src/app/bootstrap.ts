@@ -1,24 +1,17 @@
 'use strict';
 
-import Enumerations = require('./core/enumerations');
-import Constants = require('./core/constants');
+import Utilities = require('./core/utilities');
 import App = require('./app');
 
 class BootStrap {
     constructor() {
-        let isCordova = document.URL.indexOf('http://') === -1 && document.URL.indexOf('https://') === -1,
-            isWindows = window.hasOwnProperty('Windows');
-
-        if (isCordova && !isWindows) {
-            Constants.context = Enumerations.ContextTypes.Cordova;
+        if (Utilities.isCordova) {
             BootStrap.cordovaLaunch();
         }
-        else if (isWindows) {
-            Constants.context = Enumerations.ContextTypes.Windows;
+        else if (Utilities.isWindows) {
             BootStrap.windowsLaunch();
         }
         else {
-            Constants.context = Enumerations.ContextTypes.Web;
             BootStrap.bootstrap();
         }
     }

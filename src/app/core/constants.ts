@@ -8,7 +8,23 @@ class Constants {
     private static isInitialized: boolean = false;
 
     public static get context(): Enumerations.ContextTypes {
-        if (!this.isInitialized) throw 'Cannot get context when it isn\'t initialized.';
+        if (!this.isInitialized) {
+            let isCordova = document.URL.indexOf('http://') === -1 && document.URL.indexOf('https://') === -1,
+                isWindows = window.hasOwnProperty('Windows');
+
+            if (isCordova && !isWindows) {
+                Constants.context = Enumerations.ContextTypes.Cordova;
+            }
+            else if (isWindows) {
+                Constants.context = Enumerations.ContextTypes.Windows;
+            }
+            else {
+                Constants.context = Enumerations.ContextTypes.Web;
+            }
+
+            Constants.isInitialized = true;
+        }
+
         return this._context;
     }
 

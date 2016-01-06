@@ -71,19 +71,15 @@ class DownloadManager {
         this.$interval(() => { this.updateQueue(); }, 300);
     }
 
-    download(url: string) {
-        try {
-            let task: Interfaces.IDownloadTask = {
-                url: url,
-                deferred: this.$q.defer<string>()
-            };
+    download(url: string): ng.IPromise<any> {
+        let task: Interfaces.IDownloadTask = {
+            url: url,
+            deferred: this.$q.defer<string>()
+        };
 
-            task.state = Enumerations.DownloadWorkerStates.NotStarted;
-            this._queue.push(task);
-            return task.deferred.promise;
-        } catch (exception) {
-            console.error(exception);
-        }
+        task.state = Enumerations.DownloadWorkerStates.NotStarted;
+        this._queue.push(task);
+        return task.deferred.promise;
     }
 }
 

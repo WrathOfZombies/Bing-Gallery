@@ -38,12 +38,12 @@ module Interfaces {
     export interface IDownloadTask {
         url: string,
         state?: Enumerations.DownloadWorkerStates
-        deferred: ng.IDeferred<string>
+        deferred: ng.IDeferred<any>
     }
 
     export interface IImageManager {
-        downloadImage: (url: string) => ng.IPromise<string>;
-        saveImage: (filename: string) => ng.IPromise<string>;
+        downloadImage: (url: string, resolution: Enumerations.Resolutions) => ng.IPromise<string>;
+        saveImage: (filename: string, byteArray: Array<number>, temporary: boolean) => ng.IPromise<string>;
         setImageAsWallpaper: (filename: string) => ng.IPromise<boolean>;
     }
 

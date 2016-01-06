@@ -78,6 +78,12 @@ module Enumerations {
         DeterminateProgress,
         Success
     }
+
+    export enum Resolutions {
+        High,
+        Medium,
+        Low
+    }
 }
 
 export = Enumerations;

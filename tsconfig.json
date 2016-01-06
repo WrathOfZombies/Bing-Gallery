@@ -31,7 +31,7 @@
         "./src/app/home/home.controller.ts",
         "./src/app/main.ts",
         "./src/app/services/bing.service.ts",
-        "./src/app/windows/windows.image.manager.ts"
+        "./src/app/windows/image.manager.ts"
     ],
     "filesGlob": [
         "./src/**/*.ts",

@@ -13,8 +13,7 @@ class DownloadWorker {
 
         this.xhr.onload = (e: Event) => {
             try {
-                let arrayBuffer = this.xhr.response;
-                postMessage({ state: 6, response: arrayBuffer });
+                postMessage({ state: 6, response: new Uint8Array(this.xhr.response) });
             }
             catch (exception) {
                 postMessage({ state: 3, response: exception.message });
@@ -36,6 +35,15 @@ class DownloadWorker {
 
         this.xhr.open(method, url, true);
         this.xhr.responseType = "arraybuffer";
+
+        let regex = new RegExp('^.+?\.([a-z]*)$', 'i');
+        let matches = regex.exec(url);
+        if (matches && matches[1]) {
+            if (matches[1] === 'jpg' || matches[1] === 'jpeg' || matches[1] === 'png') {
+                this.xhr.setRequestHeader('Accept', 'image/' + matches[1]);
+            }
+        }
+
         this.xhr.send();
     }
 }
