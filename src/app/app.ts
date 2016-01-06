@@ -27,7 +27,7 @@ class App {
         }
 
         this.module.controller('HomeController', ['BingImageService', 'ImageManager', HomeController]);
-        this.module.directive('imageLoader', [() => { return new ImageLoader(); }]);
+        this.module.directive('imageLoader', ['ImageManager', (ImageManager) => { return new ImageLoader(ImageManager).directive; }]);
     }
 
     private registerStates(

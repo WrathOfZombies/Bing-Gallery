@@ -24,6 +24,7 @@ class DownloadManager {
                         case Enumerations.DownloadWorkerStates.RequestFailed:
                         case Enumerations.DownloadWorkerStates.ResponseInvalid:
                             task.deferred.reject(e.data.response);
+                            worker.terminate();
                             break;
 
                         case Enumerations.DownloadWorkerStates.IndeterminateProgress: break;
@@ -32,10 +33,10 @@ class DownloadManager {
                             break;
 
                         case Enumerations.DownloadWorkerStates.Success:
-                            task.deferred.resolve(e.data.response);                        
+                            task.deferred.resolve(e.data.response);
+                            worker.terminate();
+                            break;
                     }
-
-                    worker.terminate();
                 };
                 task.state = Enumerations.DownloadWorkerStates.Started;
                 this._active.splice(index, 1);

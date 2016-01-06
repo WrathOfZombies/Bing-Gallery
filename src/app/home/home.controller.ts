@@ -27,9 +27,7 @@ class HomeController {
     setBackground(image: Interfaces.IBingImage) {
         var url = 'https://www.bing.com' + image.urlbase;
         this.ImageManager.downloadImage(url, Enumerations.Resolutions.High)
-            .then((result) => {
-                return this.ImageManager.setImageAsWallpaper(result);
-            })
+            .then((result) => { return this.ImageManager.setImageAsWallpaper(result.filename); })
             .then((success) => {
                 console.log(success);
             }, (error) => {
