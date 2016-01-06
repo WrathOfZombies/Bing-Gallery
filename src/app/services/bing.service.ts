@@ -13,6 +13,10 @@ class BingImageService {
         return response.data.images;
     }
 
+    private requestFailed(error) {
+        return null;
+    }
+
     constructor(private $http: ng.IHttpService) { }
 
     getImagesFromCalendar(
@@ -30,7 +34,7 @@ class BingImageService {
         if (false) formattedUrl = 'app/services/data.json';
 
         let xhr = this.$http.get<Interfaces.IBingImageResult>(formattedUrl);
-        return xhr.then(this.retrieveImageArray);
+        return xhr.then(this.retrieveImageArray, this.requestFailed);
     }
 }
 

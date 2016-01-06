@@ -19,21 +19,21 @@ class HomeController {
     }
 
     constructor(private BingImageService: BingImageService, private ImageManager: Interfaces.IImageManager) {
-        this.BingImageService.getImagesFromCalendar(8, 15).then((images) => { this.renderImages(images) });
+        this.BingImageService
+            .getImagesFromCalendar(8, 15)
+            .then((images) => {
+                this.renderImages(images)
+            });
     }
 
     images: Array<Interfaces.IBingImage> = null;
 
     setBackground(image: Interfaces.IBingImage) {
         var url = 'https://www.bing.com' + image.urlbase;
-        this.ImageManager.downloadImage(url, Enumerations.Resolutions.High)
-            .then((result) => { return this.ImageManager.setImageAsWallpaper(result.filename); })
-            .then((success) => {
-                console.log(success);
-            }, (error) => {
-                console.error(error);
-            }, (progress) => {
-                console.log(progress);
+        this.ImageManager
+            .downloadImage(url, Enumerations.Resolutions.High)
+            .then((result) => {
+                return this.ImageManager.setImageAsWallpaper(result.filename);
             });
     }
 }

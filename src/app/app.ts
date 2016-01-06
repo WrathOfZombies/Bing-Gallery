@@ -12,9 +12,10 @@ import BingImageService = require('./services/bing.service');
 import ImageLoader = require('./components/imageLoader/directive');
 
 class App {
-    private registerComponents() {
-        this.module.factory('BingImageService', ['$http', ($http: ng.IHttpService) => { return new BingImageService($http); }]);
-        this.module.factory('DownloadManager', ['$q', '$interval', ($q: ng.IQService, $interval: ng.IIntervalService) => { return new DownloadManager($q, $interval); }]);
+    private registerFactories() {
+        this.module
+            .factory('BingImageService', ['$http', ($http: ng.IHttpService) => { return new BingImageService($http); }])
+            .factory('DownloadManager', ['$q', '$interval', ($q: ng.IQService, $interval: ng.IIntervalService) => { return new DownloadManager($q, $interval); }]);
 
         if (Utilities.isWindows) {
             this.module.factory('ImageManager', ['$q', 'DownloadManager', ($q: ng.IQService, DownloadManager: DownloadManager) => { return new WindowsImageManager($q, DownloadManager) }]);
@@ -23,32 +24,36 @@ class App {
 
         }
         else {
-            this.module.factory('ImageManager', ['$q', 'DownloadManager', ($q: ng.IQService, DownloadManager: DownloadManager) => { return new WindowsImageManager($q, DownloadManager) }]);
-        }
 
-        this.module.controller('HomeController', ['BingImageService', 'ImageManager', HomeController]);
+        }
+    }
+
+    private registerComponents() {
         this.module.directive('imageLoader', ['ImageManager', (ImageManager) => { return new ImageLoader(ImageManager).directive; }]);
     }
 
-    private registerStates(
-        $stateProvider: ng.ui.IStateProvider,
-        $locationProvider: ng.ILocationProvider
-    ) {
+    private registerControllers() {
+        this.module.controller('HomeController', ['BingImageService', 'ImageManager', HomeController]);
+    }
+
+    private registerStates($stateProvider: ng.ui.IStateProvider) {
         $stateProvider.state(Utilities.getStateDefinition('Home'));
     }
 
     private configureComponents() {
-        this.module.config(['$stateProvider', '$locationProvider', this.registerStates]);
+        this.module.config(['$stateProvider', this.registerStates]);
     }
 
     constructor(private module: ng.IModule) {
+        this.registerFactories();
+        this.registerControllers();
         this.registerComponents();
         this.configureComponents();
         this.run();
     }
 
     run() {
-        this.module.run(['$state', 'BingImageService', ($state: ng.ui.IStateService, BingImageService: BingImageService) => {
+        this.module.run(['$state', ($state: ng.ui.IStateService) => {
             $state.go('Home');
         }]);
     }

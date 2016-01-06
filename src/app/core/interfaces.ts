@@ -42,8 +42,8 @@ module Interfaces {
     }
 
     export interface IImageManager {
-        downloadImage: (url: string, resolution: Enumerations.Resolutions) => ng.IPromise<IImageFile>;
-        saveImage: (filename: string, byteArray: Array<number>, resolution: Enumerations.Resolutions, temporary: boolean) => ng.IPromise<IImageFile>;
+        loadImage: (url: string, resolution: Enumerations.Resolutions) => ng.IPromise<IImageFile>;
+        saveImage: (filename: string, byteArray: Array<number>, temporary: boolean) => ng.IPromise<IImageFile>;
         setImageAsWallpaper: (filename: string) => ng.IPromise<boolean>;
     }
 
@@ -53,8 +53,7 @@ module Interfaces {
 
     export interface IImageFile {
         filename: string,
-        filepath: string,
-        resolution: Enumerations.Resolutions
+        filepath: string
     }
 }
 
