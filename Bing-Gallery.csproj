@@ -64,7 +64,7 @@
     <Content Include="src\app\core\download.manager.ts" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="src\app\cordova\" />
+    <Content Include="src\app\windows\storage.manager.ts" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">12.0</VisualStudioVersion>

@@ -42,9 +42,17 @@ module Interfaces {
     }
 
     export interface IImageManager {
-        loadImage: (url: string, resolution: Enumerations.Resolutions) => ng.IPromise<IImageFile>;
-        saveImage: (filename: string, byteArray: Array<number>, temporary: boolean) => ng.IPromise<IImageFile>;
         setImageAsWallpaper: (filename: string) => ng.IPromise<boolean>;
+    }
+
+    export interface IStorageManager {
+        getThumbnail: (filename: string) => ng.IPromise<IImageFile>;
+        saveThumbnail: (filename: string) => ng.IPromise<any>;
+        clearThumbnails: () => ng.IPromise<boolean>;
+
+        getWallpaper: (filename: string) => ng.IPromise<IImageFile>;
+        saveWallpaper: (filename: string) => ng.IPromise<any>;    
+        clearWallpapers: () => ng.IPromise<boolean>;
     }
 
     export interface IImageLoaderAttributes extends ng.IAttributes {
