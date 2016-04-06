@@ -4,12 +4,18 @@
   "ref": "master",
   "path": "typings",
   "bundle": "typings/tsd.d.ts",
-  "installed": {    
+  "installed": {
     "underscore/underscore.d.ts": {
       "commit": "8ea42cd8bb11863ed6f242d67c502288ebc45a7b"
-    },   
+    },
     "systemjs/systemjs.d.ts": {
       "commit": "627b6c158b73494c803f36fc2fe00ad75faa8fde"
-    }    
+    },
+    "winjs/winjs.d.ts": {
+      "commit": "513510a89acc648422c9abb047265116198f99ee"
+    },
+    "winrt/winrt.d.ts": {
+      "commit": "513510a89acc648422c9abb047265116198f99ee"
+    }
   }
 }

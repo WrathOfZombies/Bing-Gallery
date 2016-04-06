@@ -5,7 +5,7 @@
   <Properties>
     <DisplayName>UWP</DisplayName>
     <PublisherDisplayName>bhkrish</PublisherDisplayName>
-    <Logo>res\icons\windows\storelogo.png</Logo>
+    <Logo>www\assets\icons\windows\storelogo.png</Logo>
   </Properties>
   <Dependencies>
     <TargetDeviceFamily Name="Windows.Universal" MinVersion="10.0.0.0" MaxVersionTested="10.0.0.0" />
@@ -15,14 +15,14 @@
   </Resources>
   <Applications>
     <Application Id="App" StartPage="www/index.html">
-      <uap:VisualElements DisplayName="UWP" Description="UWP" BackgroundColor="transparent" Square150x150Logo="res\icons\windows\Square150x150Logo.png" Square44x44Logo="res\icons\windows\Square44x44Logo.png">
-        <uap:DefaultTile Wide310x150Logo="res\icons\windows\Wide310x150Logo.png">
+      <uap:VisualElements DisplayName="UWP" Description="UWP" BackgroundColor="transparent" Square150x150Logo="www\assets\icons\windows\Square150x150Logo.png" Square44x44Logo="www\assets\icons\windows\Square44x44Logo.png">
+        <uap:DefaultTile Wide310x150Logo="www\assets\icons\windows\Wide310x150Logo.png">
           <uap:ShowNameOnTiles>
             <uap:ShowOn Tile="square150x150Logo" />
             <uap:ShowOn Tile="wide310x150Logo" />
           </uap:ShowNameOnTiles>
         </uap:DefaultTile>
-        <uap:SplashScreen Image="res\icons\windows\splashscreen.png" />
+        <uap:SplashScreen Image="www\assets\icons\splash\splashscreen.png" />
       </uap:VisualElements>
     </Application>
   </Applications>

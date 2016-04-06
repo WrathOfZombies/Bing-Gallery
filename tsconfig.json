@@ -21,6 +21,20 @@
         "./typings/tsd.d.ts"
     ],
     "version": "1.8",
-    "files": [      
+    "files": [
+        "./typings/tsd.d.ts",
+        "./src/app/bootstrap.ts",
+        "./src/app/components/home/home.component.ts",
+        "./src/app/components/imageLoader/image.loader.component.ts",
+        "./src/app/core/helpers/utilities.ts",
+        "./src/app/core/models/constants.ts",
+        "./src/app/core/models/enumerations.ts",
+        "./src/app/core/models/interfaces.ts",
+        "./src/app/platforms/windows/image.manager.ts",
+        "./src/app/platforms/windows/storage.manager.ts",
+        "./src/app/services/bing/bing.service.ts",
+        "./src/app/services/downloader/download.manager.ts",
+        "./src/app/services/downloader/download.worker.ts",
+        "./src/system.config.ts"
     ]
 }

@@ -1,4 +1,3 @@
-/// <reference path="enumerations.ts" />
 'use strict';
 
 declare function postMessage(message: any): void;

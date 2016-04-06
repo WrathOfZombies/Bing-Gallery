@@ -19,7 +19,7 @@
     },
     "devDependencies": {
         "gulp": "3.9.1",
-        "gulp-sass": "2.1.0",        
+        "gulp-sass": "2.1.0",
         "gulp-plumber": "1.1.0",
         "gulp-typescript": "2.12.1",
         "gulp-sourcemaps": "1.6.0",
@@ -34,13 +34,17 @@
             "bundles/angular2.dev.js",
             "bundles/router.dev.js",
             "bundles/http.dev.js"
-        ],        
+        ],
         "systemjs": [
             "dist/system.js",
             "dist/system-polyfills.js"
         ],
         "es6-shim": "es6-shim.min.js",
         "rxjs": "bundles/Rx.js",
-        "underscore": "underscore.js"
+        "underscore": "underscore.js",
+        "angular-material": [
+            "angular-material.js",
+            "angular-material.css"
+        ]
     }
 }

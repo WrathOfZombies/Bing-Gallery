@@ -1,14 +1,17 @@
 'use strict';
 
-import Interfaces = require('../core/interfaces');
-import Enumerations = require('../core/enumerations');
-import Utilities = require('../core/utilities');
+import {IBingImage, IBingImageResult} from '../../core/models/interfaces';
+import {RegionType} from '../../core/models/enumerations';
+import {Utilities} from '../../core/helpers/utilities';
 
 
-class BingImageService {
+class BingService {
+    constructor() {
+    }
+
     private url: string = 'https://www.bing.com/HPImageArchive.aspx?format=js&n={count}&idx={page}&mkt={region}';
 
-    private retrieveImageArray(response: ng.IHttpPromiseCallbackArg<Interfaces.IBingImageResult>): Array<Interfaces.IBingImage> {
+    private retrieveImageArray(response: ng.IHttpPromiseCallbackArg<IBingImageResult>): Array<IBingImage> {
         if (!(response && response.data)) return null;
         return response.data.images;
     }
@@ -17,25 +20,24 @@ class BingImageService {
         return null;
     }
 
-    constructor(private $http: ng.IHttpService) { }
 
     getImagesFromCalendar(
         count: number = 1,
         page: number = 0,
-        region: Enumerations.RegionType = Enumerations.RegionType.UnitedStatesEN
+        region: RegionType = RegionType.UnitedStatesEN
     ) {
         if (count < 0 || page < 0) return null;
 
-        let formattedUrl = this.url;
+        let formattedUrl = this.url,
+            flag = false;
+
         formattedUrl = formattedUrl.replace('{count}', count.toString());
         formattedUrl = formattedUrl.replace('{page}', page.toString());
         formattedUrl = formattedUrl.replace('{region}', Utilities.getRegion(region));
 
-        if (false) formattedUrl = 'app/services/data.json';
+        if (flag) formattedUrl = 'app/services/data.json';
 
-        let xhr = this.$http.get<Interfaces.IBingImageResult>(formattedUrl);
+        let xhr = this.$http.get<IBingImageResult>(formattedUrl);
         return xhr.then(this.retrieveImageArray, this.requestFailed);
     }
 }
-
-export = BingImageService;

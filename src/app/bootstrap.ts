@@ -1,7 +1,8 @@
 'use strict';
 
+import {bootstrap} from 'angular2/platform/browser';
 import Utilities = require('./core/utilities');
-import App = require('./app');
+import AppComponent = require('./app.component');
 
 class BootStrap {
     constructor() {
@@ -39,15 +40,8 @@ class BootStrap {
     }
 
     static bootstrap() {
-        let module = angular.module('BingGallery', ['ui.router', 'ngAnimate', 'ngMessages', 'ngAria', 'ngMaterial']);
-
-        if (!(document && angular)) return;
-        new App(module);
-
-        angular.element(document).ready(() => {
-            angular.bootstrap(document, ['BingGallery']);
-        });
+        bootstrap(AppComponent);
     }
 }
 
-export = BootStrap;
+new BootStrap();

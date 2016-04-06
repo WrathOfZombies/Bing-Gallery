@@ -26,7 +26,7 @@
                 'lib/http.dev.js': {
                     deps: ['lib/angular2.dev']
                 },
-                'lib/jquery.fabric.js': {
+                'lib/angular-material.js': {
                     exports: '$'
                 },
                 'lib/underscore.js': {
