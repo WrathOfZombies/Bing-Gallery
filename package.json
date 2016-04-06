@@ -1,24 +1,46 @@
 {
-  "name": "generator-angularts",
-  "description": "Sample step by step tutorial to create a word addin",
-  "version": "1.0.0",
-  "author": {
-    "name": "Bhargav Krishna",
-    "email": "bhkrish@microsoft.com"
-  },
-  "private": true,
-  "devDependencies": {
-    "gulp": "^3.9.0",
-    "gulp-plumber": "^1.0.1",
-    "gulp-bower": "^0.0.11",
-    "gulp-sass": "^2.1.0",
-    "gulp-filter": "^3.0.1",
-    "gulp-typescript": "^2.10.0",    
-    "gulp-sourcemaps": "^1.6.0",    
-    "gulp-connect": "^2.2.0",
-    "del": "^2.1.0",
-    "main-bower-files": "^2.9.0",
-    "tsconfig-glob": "^0.3.3",
-    "merge2": "^0.3.6"
-  }
+    "name": "bing-gallery",
+    "description": "Cross platform application that allows people to save the bing wallpapers as desktop wallpapers.",
+    "version": "1.0.0",
+    "author": {
+        "name": "Bhargav Krishna"
+    },
+    "private": true,
+    "dependencies": {
+        "angular2": "2.0.0-beta.13",
+        "systemjs": "0.19.25",
+        "es6-promise": "3.1.2",
+        "es6-shim": "0.35.0",
+        "reflect-metadata": "0.1.2",
+        "rxjs": "5.0.0-beta.2",
+        "zone.js": "0.6.8",
+        "underscore": "1.8.3",
+        "angular-material": "^1.0.7"
+    },
+    "devDependencies": {
+        "gulp": "3.9.1",
+        "gulp-sass": "2.1.0",        
+        "gulp-plumber": "1.1.0",
+        "gulp-typescript": "2.12.1",
+        "gulp-sourcemaps": "1.6.0",
+        "gulp-webserver": "0.9.1",
+        "del": "2.2.0",
+        "tsconfig-glob": "0.4.3",
+        "merge2": "1.0.1"
+    },
+    "overrides": {
+        "angular2": [
+            "bundles/angular2-polyfills.js",
+            "bundles/angular2.dev.js",
+            "bundles/router.dev.js",
+            "bundles/http.dev.js"
+        ],        
+        "systemjs": [
+            "dist/system.js",
+            "dist/system-polyfills.js"
+        ],
+        "es6-shim": "es6-shim.min.js",
+        "rxjs": "bundles/Rx.js",
+        "underscore": "underscore.js"
+    }
 }

@@ -1,41 +1,26 @@
 {
     "compileOnSave": false,
     "compilerOptions": {
-        "declaration": false,
+        "target": "es6",
+        "module": "system",
+        "moduleResolution": "node",
+        "sourceMap": true,
         "emitDecoratorMetadata": true,
         "experimentalDecorators": true,
-        "module": "amd",
-        "moduleResolution": "node",
-        "noEmitOnError": true,
         "noImplicitAny": false,
-        "outDir": "./www",
         "removeComments": false,
         "rootDir": "./src",
-        "target": "es5"
+        "outDir": "./www"
     },
     "exclude": [
         "node_modules",
         "bower_components"
     ],
-    "files": [
-        "./typings/tsd.d.ts",
-        "./src/app/app.ts",
-        "./src/app/bootstrap.ts",
-        "./src/app/components/imageLoader/directive.ts",
-        "./src/app/core/constants.ts",
-        "./src/app/core/download.manager.ts",
-        "./src/app/core/download.worker.ts",
-        "./src/app/core/enumerations.ts",
-        "./src/app/core/interfaces.ts",
-        "./src/app/core/utilities.ts",
-        "./src/app/home/home.controller.ts",
-        "./src/app/main.ts",
-        "./src/app/services/bing.service.ts",
-        "./src/app/windows/image.manager.ts"
-    ],
     "filesGlob": [
         "./src/**/*.ts",
         "./typings/tsd.d.ts"
     ],
-    "version": "1.8"
+    "version": "1.8",
+    "files": [      
+    ]
 }

@@ -1,16 +1,17 @@
 {
-  "lib": {
-      "source": "bower_components",
-      "dest":"www\\lib"
-  },
-  "app": {
-      "source": "src",
-      "dest": "www"
-  },
-  "server": {
-    "root": "www\\",
-    "host": "localhost",
-    "port": 8080,
-    "fallback": "www\\index.html"
-  }
+    "lib": {
+        "source": "node_modules",
+        "dest": "www\\lib"
+    },
+    "app": {
+        "source": "src",
+        "dest": "www"
+    },
+    "server": {
+        "host": "localhost",
+        "port": 8080,
+        "directoryListing": false,
+        "https": false,
+        "fallback": "index.html"
+    }
 }
